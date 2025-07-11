@@ -1,0 +1,30 @@
+task: bpm
+data:
+  segment_duration: 10
+  label_type: bpm
+  bpm_source: bpm_marco
+  features:
+  - tssd
+  preprocessor: true
+loss:
+  name: mae
+encoder:
+  type: 2D
+  params:
+    out_size:
+    - 64
+    - 64
+    out_chs: 32
+    kernel_size:
+    - 7
+    - 7
+  attention:
+    type: mhsa
+    params:
+      heads: 8
+      dim_head: 32
+kan:
+  type: BPMKAN
+epochs: 1
+experiment_id: ENC_chs32_ks_[7, 7]_att_mhsa_mae_tssd
+description: Automatically generated, see hyper_params_space.py for details

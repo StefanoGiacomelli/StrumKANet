@@ -1,0 +1,25 @@
+task: bpm
+data:
+  segment_duration: 10
+  label_type: bpm
+  bpm_source: bpm_marco
+  features:
+  - bpm_estimates
+  preprocessor: true
+loss:
+  name: mae
+encoder:
+  type: 1D
+  params:
+    out_size: 4096
+    out_chs: 16
+    kernel_size: 3
+  attention:
+    type: se
+    params:
+      reduction: 16
+kan:
+  type: BPMKAN
+epochs: 1
+experiment_id: ENC_chs16_ks_3_att_se_mae_bpm_estimates
+description: Automatically generated, see hyper_params_space.py for details

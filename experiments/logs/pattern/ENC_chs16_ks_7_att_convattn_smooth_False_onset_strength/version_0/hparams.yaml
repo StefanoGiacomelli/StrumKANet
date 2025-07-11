@@ -1,0 +1,31 @@
+config:
+  data:
+    bpm_source: bpm_marco
+    features:
+    - onset_strength
+    label_type: pattern
+    preprocessor: true
+    segment_duration: 10
+  description: Automatically generated, see hyper_params_space.py for details
+  encoder:
+    attention:
+      params:
+        kernel_size: 3
+      type: convattn
+    params:
+      kernel_size: 7
+      out_chs: 16
+      out_size: 4096
+    type: 1D
+  epochs: 1
+  experiment_id: ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength
+  kan:
+    type: PatternKAN
+  loss:
+    kwargs:
+      tolerance: 0.3
+      use_smoothing: false
+    name: categorical_cross_entropy
+  task: pattern
+downstream_task: pattern
+lr: 0.0005

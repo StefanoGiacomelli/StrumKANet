@@ -1,0 +1,24 @@
+task: bpm
+data:
+  segment_duration: 10
+  label_type: bpm
+  bpm_source: bpm_marco
+  features:
+  - onset_strength
+  preprocessor: true
+loss:
+  name: mae
+encoder:
+  type: 1D
+  params:
+    out_size: 4096
+    out_chs: 32
+    kernel_size: 3
+  attention:
+    type: null
+    params: null
+kan:
+  type: BPMKAN
+epochs: 1
+experiment_id: ENC_chs32_ks_3_att_None_mae_onset_strength
+description: Automatically generated, see hyper_params_space.py for details

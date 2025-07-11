@@ -1,0 +1,33 @@
+task: pattern
+data:
+  segment_duration: 10
+  label_type: pattern
+  bpm_source: bpm_marco
+  features:
+  - trh
+  preprocessor: true
+loss:
+  name: categorical_cross_entropy
+  kwargs:
+    tolerance: 0.3
+    use_smoothing: true
+encoder:
+  type: 2D
+  params:
+    out_size:
+    - 64
+    - 64
+    out_chs: 16
+    kernel_size:
+    - 3
+    - 3
+  attention:
+    type: axial
+    params:
+      heads: 8
+      dim_head: 32
+kan:
+  type: PatternKAN
+epochs: 1
+experiment_id: ENC_chs16_ks_[3, 3]_att_axial_smooth_True_trh
+description: Automatically generated, see hyper_params_space.py for details

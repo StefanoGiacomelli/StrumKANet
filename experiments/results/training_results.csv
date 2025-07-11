@@ -1,0 +1,15 @@
+experiment_id,test_loss,test_metric,stopped_epoch
+"ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp",0.38260194659233093,0.9376114081996435,49
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp",0.22891171276569366,0.9180035650623886,23
+"ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp",0.17477768659591675,0.9411764705882353,31
+"ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp",0.49417343735694885,0.9073083778966132,31
+"ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp",0.42295706272125244,0.9429590017825312,28
+"ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength",0.34193289279937744,0.910873440285205,23
+"ENC_chs16_ks_5_att_convattn_smooth_True_rh",0.7483005523681641,0.7254901960784313,25
+"ENC_chs32_ks_[7, 7]_att_None_smooth_False_tempogram_ratio",0.36907243728637695,0.8645276292335116,34
+"ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp",0.30759644508361816,0.9233511586452763,34
+"ENC_chs16_ks_5_att_None_smooth_False_onset_strength",0.43235331773757935,0.8841354723707665,42
+"ENC_chs32_ks_[7, 7]_att_mhsa_smooth_False_tempogram_ratio",0.44842085242271423,0.8609625668449198,35
+"ENC_chs32_ks_[3, 3]_att_None_smooth_False_rp",0.20009243488311768,0.93048128342246,47
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_tempogram_ratio",0.6398935317993164,0.7593582887700535,28
+"ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp",0.2020706981420517,0.928698752228164,42

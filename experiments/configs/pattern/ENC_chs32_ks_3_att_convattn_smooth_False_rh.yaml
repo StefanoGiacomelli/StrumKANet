@@ -1,0 +1,28 @@
+task: pattern
+data:
+  segment_duration: 10
+  label_type: pattern
+  bpm_source: bpm_marco
+  features:
+  - rh
+  preprocessor: true
+loss:
+  name: categorical_cross_entropy
+  kwargs:
+    tolerance: 0.3
+    use_smoothing: false
+encoder:
+  type: 1D
+  params:
+    out_size: 4096
+    out_chs: 32
+    kernel_size: 3
+  attention:
+    type: convattn
+    params:
+      kernel_size: 3
+kan:
+  type: PatternKAN
+epochs: 1
+experiment_id: ENC_chs32_ks_3_att_convattn_smooth_False_rh
+description: Automatically generated, see hyper_params_space.py for details
