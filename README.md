@@ -74,9 +74,9 @@ StrumKANet/
 
 3. You are ready!
 
-## Baseline Checkpoint Links
+## Baseline Checkpoints
 
-To_Do
+[Require access at this link!](https://univaq-my.sharepoint.com/:f:/g/personal/stefano_giacomelli_graduate_univaq_it/Etkw9KM2gqJIprz_hfFaYLsBd_aCHeB7WhYfSEq8nmR_jQ?e=hUGPFn)
 
 ## 📄 License
 
