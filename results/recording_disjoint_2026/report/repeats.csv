@@ -1,0 +1,8 @@
+method,accuracy_seed42,accuracy_seed43,accuracy_seed44,accuracy_mean,accuracy_sd,recording_accuracy_mean
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan",0.43808,0.472877,0.431478,0.447478,0.0222422,0.49281
+"ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=kan",0.46788,0.495004,0.470735,0.477873,0.0149044,0.538562
+ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan,0.38758,0.398644,0.386331,0.390852,0.00677719,0.418301
+baseline:majority|descriptor=onset_strength,0.366881,0.366881,0.366881,0.366881,0,0.356863
+baseline:logreg|descriptor=onset_strength,0.375803,0.374732,0.370093,0.373543,0.00303511,0.431373
+baseline:majority|descriptor=rp,0.366881,0.366881,0.366881,0.366881,0,0.356863
+baseline:logreg|descriptor=rp,0.44147,0.435225,0.42202,0.432905,0.00993038,0.509804

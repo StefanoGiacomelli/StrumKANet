@@ -1,0 +1,186 @@
+{
+  "accuracy_bound_model": {
+    "description": "test_acc within +-0.02 of 0.8 + 0.2*val_acc_last",
+    "implied_train_acc_range_within": [
+      0.9818794503675212,
+      1.0243060854321706
+    ],
+    "n_within": 9
+  },
+  "by_descriptor": {
+    "onset_strength": {
+      "mean_test_accuracy": 0.8975044563279857,
+      "mean_val_acc_best": 0.4973214268684387,
+      "mean_val_acc_last": 0.4580357223749161,
+      "n": 2
+    },
+    "rh": {
+      "mean_test_accuracy": 0.7254901960784313,
+      "mean_val_acc_best": 0.6089285612106323,
+      "mean_val_acc_last": 0.5874999761581421,
+      "n": 1
+    },
+    "rp": {
+      "mean_test_accuracy": 0.928698752228164,
+      "mean_val_acc_best": 0.7000000029802322,
+      "mean_val_acc_last": 0.6685267835855484,
+      "n": 8
+    },
+    "tempogram_ratio": {
+      "mean_test_accuracy": 0.8282828282828283,
+      "mean_val_acc_best": 0.6815476218859354,
+      "mean_val_acc_last": 0.6172619064648946,
+      "n": 3
+    }
+  },
+  "checks": [
+    {
+      "check": "validation accuracies are k/n for n =",
+      "observed": [
+        560
+      ],
+      "pass": true,
+      "published_or_expected": [
+        560
+      ]
+    },
+    {
+      "check": "test accuracies are k/n for n =",
+      "observed": [
+        561
+      ],
+      "pass": true,
+      "published_or_expected": [
+        561
+      ]
+    },
+    {
+      "check": "14 runs",
+      "observed": 14,
+      "pass": true,
+      "published_or_expected": 14
+    },
+    {
+      "check": "stop epoch = best epoch index + 21 in every run",
+      "observed": [
+        21
+      ],
+      "pass": true,
+      "published_or_expected": [
+        21
+      ]
+    },
+    {
+      "check": "one validation value per epoch",
+      "observed": true,
+      "pass": true,
+      "published_or_expected": true
+    },
+    {
+      "check": "141 optimizer steps per epoch (B = 32 with 4,483 training excerpts)",
+      "observed": [
+        141.0
+      ],
+      "pass": true,
+      "published_or_expected": [
+        141.0
+      ]
+    },
+    {
+      "check": "nine models above 0.90 (8 RP + 1 OS)",
+      "observed": [
+        9,
+        8
+      ],
+      "pass": true,
+      "published_or_expected": [
+        9,
+        8
+      ]
+    }
+  ],
+  "logged_over_published_training_time": {
+    "max": 5.130899635234349,
+    "min": 3.3477868242982995
+  },
+  "logged_wall_clock_total_hours": 38.473653008474244,
+  "loss_signature_model": {
+    "description": "test_loss predicted by 0.8*train_loss_last + 0.2*val_loss_last",
+    "mae_exchangeable_test_equals_val_loss_last": 0.6688054438148227,
+    "mae_predictor": 0.05073165850979943,
+    "pearson_r": 0.8805659825113121
+  },
+  "majority_class_rate_recording_level": {
+    "source": "VERIFIED on the released archive: 99 of 255 distinct audio files (99 of 257 CSV rows); the excerpt-level rate is 2,070 / 5,604 = 0.369",
+    "value": 0.38823529411764707,
+    "value_over_csv_rows": 0.3852140077821012
+  },
+  "median_populations": {
+    "all_14": {
+      "accuracy": 0.9144385026737968,
+      "loss": 0.37583719193935394
+    },
+    "attention_free_11": {
+      "accuracy": 0.9233511586452763,
+      "loss": 0.36907243728637695,
+      "n": 11
+    },
+    "rp_attention_free_8": {
+      "accuracy": 0.929590017825312,
+      "loss": 0.2682540789246559,
+      "n": 8
+    }
+  },
+  "n_above_0.90": 9,
+  "n_above_0.90_rp": 8,
+  "n_runs": 14,
+  "n_test_denominator": 561,
+  "n_validation_denominator": 560,
+  "n_validation_epochs_equal_stop_epoch": true,
+  "overlap_model": {
+    "expected_overlap_excerpts": 448.77997858672376,
+    "fraction": 0.8,
+    "sd_overlap_excerpts": 8.98886074872857
+  },
+  "rp_val_acc_best_range": [
+    0.6839285492897034,
+    0.7196428775787354
+  ],
+  "rp_val_acc_last_range": [
+    0.5928571224212646,
+    0.6946428418159485
+  ],
+  "stage1_test_minus_stage2_epoch0_val": {
+    "mean": 0.08741655643732456,
+    "n": 14,
+    "n_positive": 13,
+    "note": "mixes contamination with the winner's curse of selecting the 14 by their Stage-1 test scores",
+    "se": 0.019259681363089823
+  },
+  "steps_per_epoch_if_batch_32_and_4483_training_excerpts": 141,
+  "steps_per_epoch_implied": [
+    141.0
+  ],
+  "stop_minus_best_values": [
+    21
+  ],
+  "test_accuracy_range": [
+    0.7254901960784313,
+    0.9429590017825312
+  ],
+  "test_minus_val_best": {
+    "max": 0.4126591656403533,
+    "mean": 0.22762309335435899,
+    "min": 0.05042970371756328,
+    "rp_max": 0.24655273413275658,
+    "rp_min": 0.21443212627302088
+  },
+  "train_loss_last_range_smoothed_above_0.90": [
+    0.29728445410728455,
+    0.33138060569763184
+  ],
+  "train_loss_last_range_unsmoothed_above_0.90": [
+    0.039743997156620026,
+    0.14615963399410248
+  ]
+}

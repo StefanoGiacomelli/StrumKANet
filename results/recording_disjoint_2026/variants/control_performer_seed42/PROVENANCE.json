@@ -1,0 +1,102 @@
+{
+  "NEW_RUN": "training-recipe and descriptor variants under the recording-disjoint protocol; report next to, never in place of, the stored results",
+  "code_sha256": {
+    "WavKAN.py": "340b0e7f043858753fcde70d7006493e7dce63711594b642ce55a721955c931d",
+    "data.py": "da66dde7394f1448f4a7c91d1a7062b373bc946b950f3ad67863e77f8c431f3c",
+    "data_processing.py": "c26e85f72a1f6ba2f864d4ce1b39dc9e773f46045d668101e7b37c850e6fef0c",
+    "evaluation.py": "c0ea594ea694cead77d21d90106b26dad86e9f495319af0952062d0b0f99e252",
+    "feature_cache.py": "5b6c362a00e7cb12ffbf95941a874560dac6c824385a9bb2824f917c9168e012",
+    "globals.py": "0455f2f3bbb0f548f1d1cb87002751b4622aacdc669a86d4b1efc422da561dd7",
+    "main_recording_disjoint.py": "0f8bfe0788a4203c9eab01edea5c907f1b283290a91e367a7a2866b30ce8a610",
+    "main_variants.py": "df7e3aac7f1e133b5802ce3cf5c133637d42abf35d98defceee347da56c9224a",
+    "model.py": "1bc5dafae817bbbf4693d6f6446b7be480b5fff8225097002b6a8fc446883a74",
+    "splits.py": "029d14841b07a444a7c098189f87a3e46efa1b36383c17bc940a98e3298c48ec"
+  },
+  "commands": [
+    "python main_variants.py --csv <scratch>/data/dataset/dataset.csv --audio <scratch>/data/dataset/file_audio/ --cache-dir <scratch>/run/cache --grouping performer --out <scratch>/run/results/variants_control_performer_seed42 --classical lr_rp lr_tr lr_osscale lr_tros --note rp_extract_commit=f5e6fe68988e16465c6302a6c4969499328eb8a6"
+  ],
+  "environment": {
+    "hardware": {
+      "cpu": "Apple M4 Pro",
+      "load_average_1_5_15_min": [
+        14.46,
+        13.48,
+        10.12
+      ],
+      "logical_cpus": 14
+    },
+    "numpy": "1.26.4",
+    "torch": "2.13.0"
+  },
+  "first_started_utc": "2026-11-03T09:37:52Z",
+  "generated_utc": "2026-11-03T09:38:20Z",
+  "notes": {
+    "rp_extract_commit": "f5e6fe68988e16465c6302a6c4969499328eb8a6"
+  },
+  "parameters": {
+    "accelerator": "cpu",
+    "batch_size": 32,
+    "bootstrap": 2000,
+    "folds": 5,
+    "grouping": "performer",
+    "max_epochs": 50,
+    "no_nnpack": false,
+    "patience": 20,
+    "seed": 42,
+    "threads_per_worker": 1,
+    "workers": 1
+  },
+  "partition_summary": {
+    "excerpts": 5604,
+    "recordings": 255,
+    "test_groups_per_fold": [
+      26,
+      29,
+      26,
+      29,
+      28
+    ]
+  },
+  "rp_extract": {
+    "file": "<scratch>/run/code/rp_extract/rp_extract.py",
+    "git_commit": "f5e6fe68988e16465c6302a6c4969499328eb8a6",
+    "sha256": "dafe2c24213d07ff243da98af4117d88f340ea5e0dbcc75bb3d0fbccd79c6175"
+  },
+  "runs": [],
+  "variants": {
+    "classical:lr_osscale|descriptor=os_scale": {
+      "class_weight": null,
+      "descriptors": [
+        "os_scale"
+      ],
+      "input_dimension": 32,
+      "model": "StandardScaler + LogisticRegression(C=1, max_iter=300)"
+    },
+    "classical:lr_rp|descriptor=rp": {
+      "class_weight": null,
+      "descriptors": [
+        "rp"
+      ],
+      "input_dimension": 1440,
+      "model": "StandardScaler + LogisticRegression(C=1, max_iter=300)"
+    },
+    "classical:lr_tros|descriptor=tr_stats+os_scale": {
+      "class_weight": null,
+      "descriptors": [
+        "tr_stats",
+        "os_scale"
+      ],
+      "input_dimension": 58,
+      "model": "StandardScaler + LogisticRegression(C=1, max_iter=300)"
+    },
+    "classical:lr_tr|descriptor=tr_stats": {
+      "class_weight": null,
+      "descriptors": [
+        "tr_stats"
+      ],
+      "input_dimension": 26,
+      "model": "StandardScaler + LogisticRegression(C=1, max_iter=300)"
+    }
+  },
+  "wall_clock_seconds_last_invocation": 28.639981031417847
+}

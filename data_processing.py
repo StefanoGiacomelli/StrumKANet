@@ -4,7 +4,14 @@ import numpy as np
 import torch
 import librosa
 sys.path.append(os.path.join(os.path.dirname(__file__), "rp_extract"))
-from rp_extract.rp_extract import rp_extract
+try:                                    # rp_extract is a run-time clone (see README); it is only required by the rp/rh/tssd/trh descriptors
+    from rp_extract.rp_extract import rp_extract
+    RP_EXTRACT_AVAILABLE = True
+    _RP_EXTRACT_ERROR = None
+except ImportError as _error:
+    rp_extract = None
+    RP_EXTRACT_AVAILABLE = False
+    _RP_EXTRACT_ERROR = _error
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
@@ -183,6 +190,9 @@ def rhythm_features(x: np.ndarray = None,
                               "beats": beats}                       # array of beat event locations (in frames)
 
     if "rp_extract" in extractors:
+        if not RP_EXTRACT_AVAILABLE:
+            raise ImportError("rp_extract is not available: clone https://github.com/tuwien-musicir/rp_extract.git into the repository root "
+                              f"(import error: {_RP_EXTRACT_ERROR})")
         features = rp_extract(wavedata                        = x,
                               samplerate                      = sr,
                               extract_rp                      = True,
@@ -256,7 +266,7 @@ if __name__ == "__main__":
                 tempogram = feats["librosa"]["tempogram"]
                 tempogram_ratio = feats["librosa"]["tempogram_ratio"]
                 beats = feats["librosa"]["beats"]
-                bpm = feats["librosa"]["bpm"]
+                bpm = feats["librosa"]["bpm_librosa"]
                 try:
                     bpm_val = float(bpm.item())
                 except Exception:
@@ -435,10 +445,10 @@ if __name__ == "__main__":
             if "essentia" in feats:
                 essentia_path = os.path.join(SVG_FOLDER, f"{file_basename}_essentia.json")
                 
-                bpm = feats["essentia"]["bpm"]
+                bpm = feats["essentia"]["bpm_essentia"]
                 ticks = feats["essentia"]["ticks"]
                 confidence = feats["essentia"]["confidence"]
-                bpm_estimates = feats["essentia"]["estimates"]
+                bpm_estimates = feats["essentia"]["bpm_estimates"]
                 
                 # Print features (DEBUG)
                 print(f"  Essentia BPM: {bpm}")
@@ -488,7 +498,7 @@ if __name__ == "__main__":
 
                 plt.tight_layout(rect=[0, 0.03, 1, 0.97])
 
-                # ---- Salvataggio ----
+                # ---- Saving ----
                 save_path = os.path.join(SVG_FOLDER, f"{file_basename}_essentia.svg")
                 plt.savefig(save_path)
                 plt.close(fig)

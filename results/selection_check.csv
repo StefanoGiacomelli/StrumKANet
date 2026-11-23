@@ -1,0 +1,15 @@
+experiment_id,in_top10_accuracy,in_top10_loss,in_training_results_csv
+ENC_chs16_ks_5_att_None_smooth_False_onset_strength,True,False,True
+ENC_chs16_ks_5_att_convattn_smooth_True_rh,True,False,True
+ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength,True,False,True
+"ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp",True,True,True
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp",True,True,True
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_tempogram_ratio",False,True,True
+"ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp",True,True,True
+"ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp",True,True,True
+"ENC_chs32_ks_[3, 3]_att_None_smooth_False_rp",False,True,True
+"ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp",False,True,True
+"ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp",True,True,True
+"ENC_chs32_ks_[7, 7]_att_None_smooth_False_tempogram_ratio",True,True,True
+"ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp",True,False,True
+"ENC_chs32_ks_[7, 7]_att_mhsa_smooth_False_tempogram_ratio",False,True,True

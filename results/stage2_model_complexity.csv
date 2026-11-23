@@ -1,0 +1,15 @@
+run_id,descriptor,encoder_type,channels,attention,embedding_dim_D,encoder_params,encoder_params_log,head_params,head_params_formula_12D_plus_6,head_params_log,head_effective_params_9D_plus_6,total_params,analytic_macs_conv,analytic_macs_attention,analytic_macs_head_3D,analytic_macs_total,counted_macs_conv_matmul,counted_minus_analytic_total,encoder_params_match_log,head_params_match_log
+ENC_chs16_ks_7-7_att_None_smooth_True_rp,rp,2D,16,None,65536,832,832,786438,786438,786K,589830,787270,1128960,0,196608,1325568,1325568,0,True,True
+ENC_chs16_ks_5-5_att_None_smooth_False_rp,rp,2D,16,None,65536,448,448,786438,786438,786K,589830,786886,576000,0,196608,772608,772608,0,True,True
+ENC_chs32_ks_7-7_att_None_smooth_False_rp,rp,2D,32,None,131072,1664,1.7K,1572870,1572870,1.6M,1179654,1574534,2257920,0,393216,2651136,2651136,0,True,True
+ENC_chs16_ks_5-5_att_None_smooth_True_rp,rp,2D,16,None,65536,448,448,786438,786438,786K,589830,786886,576000,0,196608,772608,772608,0,True,True
+ENC_chs32_ks_7-7_att_None_smooth_True_rp,rp,2D,32,None,131072,1664,1.7K,1572870,1572870,1.6M,1179654,1574534,2257920,0,393216,2651136,2651136,0,True,True
+ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength,onset_strength,1D,16,convattn,65536,496,496,786438,786438,786K,589830,786934,105056,285152,196608,586816,586816,0,True,True
+ENC_chs16_ks_5_att_convattn_smooth_True_rh,rh,1D,16,convattn,65536,464,464,786438,786438,786K,589830,786902,4800,18240,196608,219648,219648,0,True,True
+ENC_chs32_ks_7-7_att_None_smooth_False_tempogram_ratio,tempogram_ratio,2D,32,None,131072,1664,1.7K,1572870,1572870,1.6M,1179654,1574534,19120192,0,393216,19513408,19513408,0,True,True
+ENC_chs16_ks_3-3_att_None_smooth_False_rp,rp,2D,16,None,65536,192,192,786438,786438,786K,589830,786630,207360,0,196608,403968,403968,0,True,True
+ENC_chs16_ks_5_att_None_smooth_False_onset_strength,onset_strength,1D,16,None,65536,128,128,786438,786438,786K,589830,786566,75040,0,196608,271648,271648,0,True,True
+ENC_chs32_ks_7-7_att_mhsa_smooth_False_tempogram_ratio,tempogram_ratio,2D,32,mhsa,131072,2689,2.7K,1572870,1572870,1.6M,1179654,1575559,1605632,537919488,393216,539918336,539918336,0,True,True
+ENC_chs32_ks_3-3_att_None_smooth_False_rp,rp,2D,32,None,131072,384,384,1572870,1572870,1.6M,1179654,1573254,414720,0,393216,807936,807936,0,True,True
+ENC_chs16_ks_5-5_att_None_smooth_False_tempogram_ratio,tempogram_ratio,2D,16,None,65536,448,448,786438,786438,786K,589830,786886,4877600,0,196608,5074208,5074208,0,True,True
+ENC_chs32_ks_5-5_att_None_smooth_False_rp,rp,2D,32,None,131072,896,896,1572870,1572870,1.6M,1179654,1573766,1152000,0,393216,1545216,1545216,0,True,True

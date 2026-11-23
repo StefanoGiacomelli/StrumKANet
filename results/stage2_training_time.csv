@@ -1,0 +1,15 @@
+run_id,stop_epoch,fit_wall_clock_s,seconds_per_epoch,fit_wall_clock_h_mm_ss,published_table_time_s,logged_over_published
+ENC_chs16_ks_7-7_att_None_smooth_True_rp,49,11705.8159292,238.894202636,3:15:05,2672,4.38091913517
+ENC_chs16_ks_5-5_att_None_smooth_False_rp,23,5460.24031043,237.401752627,1:31:00,1631,3.3477868243
+ENC_chs32_ks_7-7_att_None_smooth_False_rp,31,7462.80129766,240.735525731,2:04:22,2082,3.58443866362
+ENC_chs16_ks_5-5_att_None_smooth_True_rp,31,7426.12939239,239.552561045,2:03:46,1930,3.84773543647
+ENC_chs32_ks_7-7_att_None_smooth_True_rp,28,6759.50512028,241.410897153,1:52:39,1849,3.65576263941
+ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength,23,9107.34685254,395.971602284,2:31:47,1775,5.13089963523
+ENC_chs16_ks_5_att_convattn_smooth_True_rh,25,6018.55679893,240.742271957,1:40:18,,
+ENC_chs32_ks_7-7_att_None_smooth_False_tempogram_ratio,34,13476.2252707,396.359566787,3:44:36,,
+ENC_chs16_ks_3-3_att_None_smooth_False_rp,34,8175.50802279,240.456118317,2:16:15,2102,3.88939487288
+ENC_chs16_ks_5_att_None_smooth_False_onset_strength,42,16624.8136504,395.828896437,4:37:04,,
+ENC_chs32_ks_7-7_att_mhsa_smooth_False_tempogram_ratio,35,13935.8653522,398.16758149,3:52:15,,
+ENC_chs32_ks_3-3_att_None_smooth_False_rp,47,11207.0426927,238.447716865,3:06:47,2600,4.31040103564
+ENC_chs16_ks_5-5_att_None_smooth_False_tempogram_ratio,28,11121.5803568,397.199298458,3:05:21,,
+ENC_chs32_ks_5-5_att_None_smooth_False_rp,42,10023.7197835,238.659994846,2:47:03,2413,4.15404881208

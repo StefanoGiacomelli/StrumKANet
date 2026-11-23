@@ -1,0 +1,216 @@
+{
+  "excerpt": {
+    "baselines": {
+      "baseline:logreg|descriptor=onset_strength": {
+        "accuracy": 0.448608,
+        "ci": [
+          0.425376,
+          0.471419
+        ],
+        "recording_accuracy": 0.572549
+      },
+      "baseline:logreg|descriptor=rp": {
+        "accuracy": 0.592791,
+        "ci": [
+          0.572407,
+          0.614097
+        ],
+        "recording_accuracy": 0.882353
+      },
+      "baseline:majority|descriptor=onset_strength": {
+        "accuracy": 0.369201,
+        "ci": [
+          0.326462,
+          0.413136
+        ],
+        "recording_accuracy": 0.388235
+      },
+      "baseline:majority|descriptor=rp": {
+        "accuracy": 0.369201,
+        "ci": [
+          0.326462,
+          0.413136
+        ],
+        "recording_accuracy": 0.388235
+      }
+    },
+    "head=kan": {
+      "best": "ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=kan",
+      "best_accuracy": 0.681656,
+      "best_ci": [
+        0.658332,
+        0.704393
+      ],
+      "max_accuracy": 0.681656,
+      "median_accuracy": 0.662562,
+      "min_accuracy": 0.472877,
+      "n_configurations": 9
+    }
+  },
+  "inputs_sha256": {
+    "control_excerpt_seed42/PROVENANCE.json": "4bc1fe97ea69b98b82dd76d7e1c8770fbdcd152e2644f841033319575913263e",
+    "control_excerpt_seed42/folds.csv": "f71a06ec9039e45a1c5547332bd433cbd7acf49a9a838444aac0a3f86485880e",
+    "control_excerpt_seed42/summary.csv": "eba93d3a11593dec136638baf2e02cb58a1dd0d28d04bec68b578f379f1892b6",
+    "control_excerpt_seed42/validation_curves.csv": "b9145ddb523a42f0614ee0345cfe11fe459fbeabbddc89df00c39d23b8907df5",
+    "control_performer_seed42/PROVENANCE.json": "c2a298be0613af34f45332fc742f9c384ee6a29c0582d44b5c5a95c4c2bf2d6a",
+    "control_performer_seed42/folds.csv": "3c0b9715d933787cae6aca04b06386ef4d859d25d92f4b8204075d700353c4e2",
+    "control_performer_seed42/summary.csv": "20948b29fff15c6d25c97374f522f98f85e27ad4c9d6ac8a0284f587a15cc1f4",
+    "control_performer_seed42/validation_curves.csv": "785af9793af24f4905699e1adeb4db4e7fc5d02e9edfe82965fa9bd777a6791a",
+    "primary_seed42/PROVENANCE.json": "16059e81d72e82bd5ce6928af5b2091462a7ee3c94905a11a09e4ce65508f70c",
+    "primary_seed42/folds.csv": "f27d25c4b5d635c22c432374a21391c94bc3bde7e77a86137152e234ded9e299",
+    "primary_seed42/summary.csv": "27ad2065eeb50ff43033fb8a9ad16c27fd34d0999e5a5b8fe1996096b787171a",
+    "primary_seed42/validation_curves.csv": "603e7be0ff2816d568b990c4648dca40ca463fc1255adb1ba546e611710b739a",
+    "recording_seed43/PROVENANCE.json": "56a97dc012a028ec0cac0841f28ecf41d8adb5d2bf47916e115005c3a886be99",
+    "recording_seed43/folds.csv": "d297ff4477d6c54c81ef591b13e00a8892c5b46651426ed0015f27ce2032df3d",
+    "recording_seed43/summary.csv": "740842f01c5ee9de9e112ffba31a5641e33c35e442eecfe6e53e4090df23a24e",
+    "recording_seed43/validation_curves.csv": "a8930b2029e6b16698c306d3be19cefa4e53606a5c259dc2cd814452703f15b6",
+    "recording_seed44/PROVENANCE.json": "3efe026382e092ad4bfd40bd50c512a4914b74419d7115abe8a77dc1b67f89ad",
+    "recording_seed44/folds.csv": "26092f42f2b759a4a5d5b2739add2f5f37a706ac5013e4991cd647f1793b8593",
+    "recording_seed44/summary.csv": "01394ee40eff2d2552485aac4b80e53dffa4a98441d79127ba3e631cb4bbf885",
+    "recording_seed44/validation_curves.csv": "b09aac58f209d506b43ede9406f0fe94b739ec070dfece665b78279093babab8"
+  },
+  "n_methods": 31,
+  "performer": {
+    "baselines": {
+      "baseline:logreg|descriptor=onset_strength": {
+        "accuracy": 0.367416,
+        "ci": [
+          0.348266,
+          0.385675
+        ],
+        "recording_accuracy": 0.415686
+      },
+      "baseline:logreg|descriptor=rp": {
+        "accuracy": 0.433262,
+        "ci": [
+          0.40486,
+          0.459553
+        ],
+        "recording_accuracy": 0.560784
+      },
+      "baseline:majority|descriptor=onset_strength": {
+        "accuracy": 0.36813,
+        "ci": [
+          0.307011,
+          0.429129
+        ],
+        "recording_accuracy": 0.372549
+      },
+      "baseline:majority|descriptor=rp": {
+        "accuracy": 0.36813,
+        "ci": [
+          0.307011,
+          0.429129
+        ],
+        "recording_accuracy": 0.372549
+      }
+    },
+    "head=kan": {
+      "best": "ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp|head=kan",
+      "best_accuracy": 0.46788,
+      "best_ci": [
+        0.427085,
+        0.508484
+      ],
+      "max_accuracy": 0.46788,
+      "median_accuracy": 0.454854,
+      "min_accuracy": 0.396324,
+      "n_configurations": 9
+    }
+  },
+  "protocols": {
+    "excerpt": "control_excerpt_seed42",
+    "performer": "control_performer_seed42",
+    "recording": "primary_seed42"
+  },
+  "recording": {
+    "baselines": {
+      "baseline:logreg|descriptor=onset_strength": {
+        "accuracy": 0.375803,
+        "ci": [
+          0.355571,
+          0.396542
+        ],
+        "recording_accuracy": 0.431373
+      },
+      "baseline:logreg|descriptor=rp": {
+        "accuracy": 0.44147,
+        "ci": [
+          0.414609,
+          0.467224
+        ],
+        "recording_accuracy": 0.517647
+      },
+      "baseline:majority|descriptor=onset_strength": {
+        "accuracy": 0.366881,
+        "ci": [
+          0.304625,
+          0.429567
+        ],
+        "recording_accuracy": 0.356863
+      },
+      "baseline:majority|descriptor=rp": {
+        "accuracy": 0.366881,
+        "ci": [
+          0.304625,
+          0.429567
+        ],
+        "recording_accuracy": 0.356863
+      }
+    },
+    "head=kan": {
+      "best": "ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp|head=kan",
+      "best_accuracy": 0.476267,
+      "best_ci": [
+        0.441081,
+        0.512565
+      ],
+      "max_accuracy": 0.476267,
+      "median_accuracy": 0.464847,
+      "min_accuracy": 0.38758,
+      "n_configurations": 9
+    },
+    "head=linear": {
+      "best": "ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=linear",
+      "best_accuracy": 0.473947,
+      "best_ci": [
+        0.440115,
+        0.508329
+      ],
+      "max_accuracy": 0.473947,
+      "median_accuracy": 0.463062,
+      "min_accuracy": 0.371877,
+      "n_configurations": 9
+    },
+    "head=mlp": {
+      "best": "ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=mlp",
+      "best_accuracy": 0.498751,
+      "best_ci": [
+        0.463879,
+        0.534126
+      ],
+      "max_accuracy": 0.498751,
+      "median_accuracy": 0.484832,
+      "min_accuracy": 0.385617,
+      "n_configurations": 9
+    }
+  },
+  "rp_wavkan_mean_confusion_row_shares_recording_disjoint": [
+    [
+      0.4316,
+      0.3745,
+      0.1939
+    ],
+    [
+      0.297,
+      0.5876,
+      0.1154
+    ],
+    [
+      0.3946,
+      0.2875,
+      0.3179
+    ]
+  ],
+  "run": "primary_seed42"
+}

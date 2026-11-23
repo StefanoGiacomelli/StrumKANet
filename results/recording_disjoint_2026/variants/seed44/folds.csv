@@ -1,0 +1,76 @@
+method,fold,n_test_excerpts,n_test_recordings,test_accuracy,test_loss,best_epoch,stop_epoch,val_acc_best,fit_seconds
+classical:lr_rp|descriptor=rp,0,1117,50,0.394808,,,,,
+classical:lr_rp|descriptor=rp,1,1127,51,0.415262,,,,,
+classical:lr_rp|descriptor=rp,2,1110,51,0.430631,,,,,
+classical:lr_rp|descriptor=rp,3,1119,51,0.410188,,,,,
+classical:lr_rp|descriptor=rp,4,1131,52,0.458886,,,,,
+classical:lr_tr|descriptor=tr_stats,0,1117,50,0.646374,,,,,
+classical:lr_tr|descriptor=tr_stats,1,1127,51,0.599823,,,,,
+classical:lr_tr|descriptor=tr_stats,2,1110,51,0.672072,,,,,
+classical:lr_tr|descriptor=tr_stats,3,1119,51,0.600536,,,,,
+classical:lr_tr|descriptor=tr_stats,4,1131,52,0.619805,,,,,
+classical:lr_osscale|descriptor=os_scale,0,1117,50,0.654432,,,,,
+classical:lr_osscale|descriptor=os_scale,1,1127,51,0.599823,,,,,
+classical:lr_osscale|descriptor=os_scale,2,1110,51,0.606306,,,,,
+classical:lr_osscale|descriptor=os_scale,3,1119,51,0.607685,,,,,
+classical:lr_osscale|descriptor=os_scale,4,1131,52,0.607427,,,,,
+classical:lr_tros|descriptor=tr_stats+os_scale,0,1117,50,0.675022,,,,,
+classical:lr_tros|descriptor=tr_stats+os_scale,1,1127,51,0.652174,,,,,
+classical:lr_tros|descriptor=tr_stats+os_scale,2,1110,51,0.672973,,,,,
+classical:lr_tros|descriptor=tr_stats+os_scale,3,1119,51,0.619303,,,,,
+classical:lr_tros|descriptor=tr_stats+os_scale,4,1131,52,0.661362,,,,,
+classical:lr_tr_bal|descriptor=tr_stats,0,1117,50,0.640107,,,,,
+classical:lr_tr_bal|descriptor=tr_stats,1,1127,51,0.611358,,,,,
+classical:lr_tr_bal|descriptor=tr_stats,2,1110,51,0.669369,,,,,
+classical:lr_tr_bal|descriptor=tr_stats,3,1119,51,0.582663,,,,,
+classical:lr_tr_bal|descriptor=tr_stats,4,1131,52,0.638373,,,,,
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_tempogram_ratio|head=kan|variant=base",0,1117,50,0.600716,,6,27,0.587814,732.61
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_tempogram_ratio|head=kan|variant=base",1,1127,51,0.590062,,41,50,0.561717,1385.65
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_tempogram_ratio|head=kan|variant=base",2,1110,51,0.618018,,18,39,0.573975,1034.74
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_tempogram_ratio|head=kan|variant=base",3,1119,51,0.546917,,10,31,0.642984,826.212
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_tempogram_ratio|head=kan|variant=base",4,1131,52,0.637489,,4,25,0.59034,628.907
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=mlp|variant=aug",0,1117,50,0.535363,,46,50,0.566308,299.957
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=mlp|variant=aug",1,1127,51,0.580302,,15,36,0.593918,208.346
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=mlp|variant=aug",2,1110,51,0.537838,,41,50,0.552585,273.781
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=mlp|variant=aug",3,1119,51,0.470956,,14,35,0.60746,202.328
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=mlp|variant=aug",4,1131,52,0.545535,,42,50,0.55814,292.221
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=mlp|variant=views",0,1117,50,0.478962,,21,42,0.535842,242.192
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=mlp|variant=views",1,1127,51,0.567879,,10,31,0.536673,177.532
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=mlp|variant=views",2,1110,51,0.510811,,25,46,0.508021,252.486
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=mlp|variant=views",3,1119,51,0.457551,,15,36,0.573712,180.064
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=mlp|variant=views",4,1131,52,0.517241,,27,48,0.500894,228.441
+VEC_tros|head=mlp|variant=base,0,1117,50,0.643688,,6,27,0.61828,3.76679
+VEC_tros|head=mlp|variant=base,1,1127,51,0.620231,,43,50,0.615385,6.74986
+VEC_tros|head=mlp|variant=base,2,1110,51,0.643243,,25,46,0.57041,6.21692
+VEC_tros|head=mlp|variant=base,3,1119,51,0.599643,,27,48,0.673179,6.41652
+VEC_tros|head=mlp|variant=base,4,1131,52,0.6313,,24,45,0.615385,5.98573
+VEC_tros|head=mlp|variant=bal,0,1117,50,0.639212,,16,37,0.612903,4.90802
+VEC_tros|head=mlp|variant=bal,1,1127,51,0.629991,,42,50,0.604651,8.35476
+VEC_tros|head=mlp|variant=bal,2,1110,51,0.645946,,17,38,0.575758,5.72742
+VEC_tros|head=mlp|variant=bal,3,1119,51,0.596962,,19,40,0.666075,6.23339
+VEC_tros|head=mlp|variant=bal,4,1131,52,0.6313,,24,45,0.620751,6.19484
+VEC_tros|head=kan|variant=base,0,1117,50,0.528201,,20,41,0.560932,5.26689
+VEC_tros|head=kan|variant=base,1,1127,51,0.540373,,20,41,0.592129,4.84694
+VEC_tros|head=kan|variant=base,2,1110,51,0.603604,,38,50,0.534759,5.8219
+VEC_tros|head=kan|variant=base,3,1119,51,0.57462,,14,35,0.598579,3.98086
+VEC_tros|head=kan|variant=base,4,1131,52,0.527851,,7,28,0.522361,3.19798
+VEC_tros|head=kan|variant=bal,0,1117,50,0.510295,,30,50,0.550179,5.88736
+VEC_tros|head=kan|variant=bal,1,1127,51,0.563443,,40,50,0.59034,5.93901
+VEC_tros|head=kan|variant=bal,2,1110,51,0.602703,,31,50,0.534759,6.14434
+VEC_tros|head=kan|variant=bal,3,1119,51,0.551385,,10,31,0.59325,3.82915
+VEC_tros|head=kan|variant=bal,4,1131,52,0.516357,,6,27,0.52415,3.51574
+VEC_tros|head=linear|variant=base,0,1117,50,0.64906,,33,50,0.621864,4.91438
+VEC_tros|head=linear|variant=base,1,1127,51,0.622005,,40,50,0.572451,4.67733
+VEC_tros|head=linear|variant=base,2,1110,51,0.635135,,39,50,0.543672,4.52629
+VEC_tros|head=linear|variant=base,3,1119,51,0.592493,,36,50,0.642984,4.50151
+VEC_tros|head=linear|variant=base,4,1131,52,0.615385,,34,50,0.604651,4.5505
+VEC_tros|head=linear|variant=bal,0,1117,50,0.627574,,17,38,0.609319,3.46218
+VEC_tros|head=linear|variant=bal,1,1127,51,0.611358,,35,50,0.55814,4.47928
+VEC_tros|head=linear|variant=bal,2,1110,51,0.641441,,34,50,0.540107,4.51578
+VEC_tros|head=linear|variant=bal,3,1119,51,0.58445,,47,50,0.651865,4.6538
+VEC_tros|head=linear|variant=bal,4,1131,52,0.626879,,42,50,0.610018,4.62297
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan|variant=aug",0,1117,50,0.519248,,9,30,0.498208,526.175
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan|variant=aug",1,1127,51,0.522626,,10,31,0.527728,605.906
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan|variant=aug",2,1110,51,0.501802,,25,46,0.516934,855.259
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan|variant=aug",3,1119,51,0.45487,,47,50,0.566607,793.648
+"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan|variant=aug",4,1131,52,0.481874,,34,50,0.495528,815.837

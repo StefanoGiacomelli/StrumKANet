@@ -1,0 +1,18 @@
+# Packages that were listed in the original requirements.txt (July 2025 snapshot) but are NOT imported by any
+# module of this repository: they are not needed to run, analyse or test the code. Kept here so that no
+# information of the original list is lost (the dataset is distributed with its audio on Zenodo).
+torchmetrics
+resampy
+yt-dlp
+certifi
+brotli
+websockets
+requests
+curl_cffi
+mutagen
+xattr
+pycryptodome
+pycryptodomex
+SecretStorage
+# Original comment kept: efficient-kan is the library that WavKAN.py cites in its header
+#git+https://github.com/Blealtan/efficient-kan.git

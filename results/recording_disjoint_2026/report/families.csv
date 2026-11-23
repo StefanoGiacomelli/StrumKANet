@@ -1,0 +1,11 @@
+protocol,head,descriptor,mean_accuracy,ci_low,ci_high,min_accuracy,max_accuracy,n_methods
+recording,head=kan,onset_strength,0.38758,0.355955,0.42098,0.38758,0.38758,1
+recording,head=kan,rp,0.459516,0.430133,0.488845,0.43808,0.476267,8
+recording,head=linear,onset_strength,0.371877,0.344924,0.400001,0.371877,0.371877,1
+recording,head=linear,rp,0.447738,0.424069,0.472083,0.406317,0.473947,8
+recording,head=mlp,onset_strength,0.385617,0.359812,0.411491,0.385617,0.385617,1
+recording,head=mlp,rp,0.487152,0.457456,0.517071,0.476267,0.498751,8
+excerpt,head=kan,onset_strength,0.472877,0.44259,0.504323,0.472877,0.472877,1
+excerpt,head=kan,rp,0.665819,0.645246,0.686821,0.650428,0.681656,8
+performer,head=kan,onset_strength,0.396324,0.364658,0.430512,0.396324,0.396324,1
+performer,head=kan,rp,0.455701,0.425903,0.485266,0.433084,0.46788,8

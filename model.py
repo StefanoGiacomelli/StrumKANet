@@ -363,17 +363,28 @@ class MHSA2D(nn.Module):
 
 # KAN modules --------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------
+def _wavelet_type(kan_config):
+    """Wavelet of the KAN layer from an optional ``kan_config`` dict (None keeps the stored default, 'mexican_hat')."""
+    kan_config = dict(kan_config or {})
+    wavelet_type = kan_config.pop("wavelet_type", "mexican_hat")
+    if kan_config:
+        raise ValueError(f"Unsupported kan_config keys: {sorted(kan_config)}")
+    return wavelet_type
+
+
 class BPMKAN(nn.Module):
     """
     WaveletKAN module for BPM regression.
 
     Args:
         in_feats (int): Number of input features.
+        kan_config (dict, optional): Options of the KAN layer; the only supported key is ``wavelet_type``
+            (default 'mexican_hat', the value used by every stored configuration).
     """
-    def __init__(self, in_feats):
+    def __init__(self, in_feats, kan_config=None):
         super().__init__()
         layers_hidden = [in_feats] + [1]
-        self.kan = KAN(layers_hidden=layers_hidden, wavelet_type='mexican_hat')
+        self.kan = KAN(layers_hidden=layers_hidden, wavelet_type=_wavelet_type(kan_config))
 
     def forward(self, x, encoder: nn.Module = None):
         if encoder is not None:
@@ -390,11 +401,13 @@ class PatternKAN(nn.Module):
     Args:
         in_feats (int): Number of input features.
         out_probs (int): Number of output classes.
+        kan_config (dict, optional): Options of the KAN layer; the only supported key is ``wavelet_type``
+            (default 'mexican_hat', the value used by every stored configuration).
     """
-    def __init__(self, in_feats, out_probs=3):
+    def __init__(self, in_feats, out_probs=3, kan_config=None):
         super().__init__()
         layers = [in_feats] + [out_probs]
-        self.kan = KAN(layers_hidden=layers, wavelet_type='mexican_hat')
+        self.kan = KAN(layers_hidden=layers, wavelet_type=_wavelet_type(kan_config))
 
     def forward(self, x, encoder: nn.Module = None):
         if encoder is not None:
@@ -521,6 +534,13 @@ def init_modules(config, dummy_input):
         out_probs = config["kan"].get("out_probs", 3)
         kan_head = PatternKAN(in_feats=in_feats, out_probs=out_probs, kan_config=kan_config) \
             if kan_config else PatternKAN(in_feats=in_feats, out_probs=out_probs)
+    elif kan_type == "PatternFC":
+        # Default-off ablation head (no stored configuration uses it): MLP on the same encoder,
+        # e.g. kan: {type: PatternFC, params: {hidden_dims: [64, 32]}}  or  params: {hidden_dims: []} for a linear head.
+        out_probs = config["kan"].get("out_probs", 3)
+        kan_head = PatternFC(in_feats=in_feats, out_probs=out_probs, **(config["kan"].get("params") or {}))
+    elif kan_type == "BPMFC":
+        kan_head = BPMFC(in_feats=in_feats, **(config["kan"].get("params") or {}))
     else:
         raise ValueError(f"Unsupported KAN type: {kan_type}")
 
@@ -556,6 +576,7 @@ class Model(pl.LightningModule):
         # Test results storage
         self.test_preds = []
         self.test_gts = []
+        self.test_ids = []                  # excerpt identifiers, kept for the (optional) prediction files
 
         self.save_hyperparameters(ignore=['encoder', 'kan', 'encoder_module', 'kan_module'])
 
@@ -620,7 +641,7 @@ class Model(pl.LightningModule):
         y = batch["label"]
         y_hat = self(x)
         if self.task == 'bpm':
-            y_hat = y_hat.squeeze(-1)   # schiacciamento dell'ultima dimensione per avere shape [batch] --> da verificare
+            y_hat = y_hat.squeeze(-1)   # squeeze the last dimension to obtain shape [batch] (to be verified)
         loss = self.loss_fn(y_hat, y)
         self.train_losses.append(loss.detach())
         self.log('train_loss_step', loss, prog_bar=True)
@@ -637,7 +658,7 @@ class Model(pl.LightningModule):
         y = batch["label"]
         y_hat = self(x)
         if self.task == 'bpm':
-            y_hat = y_hat.squeeze(-1)   # schiacciamento dell'ultima dimensione per avere shape [batch] --> da verificare
+            y_hat = y_hat.squeeze(-1)   # squeeze the last dimension to obtain shape [batch] (to be verified)
         loss = self.loss_fn(y_hat, y)
         self.val_losses.append(loss.detach())
         
@@ -664,7 +685,7 @@ class Model(pl.LightningModule):
         y = batch["label"]
         y_hat = self(x)
         if self.task == 'bpm':
-            y_hat = y_hat.squeeze(-1)   # schiacciamento dell'ultima dimensione per avere shape [batch] --> da verificare
+            y_hat = y_hat.squeeze(-1)   # squeeze the last dimension to obtain shape [batch] (to be verified)
         loss = self.loss_fn(y_hat, y)
         self.test_losses.append(loss.detach())
         
@@ -674,7 +695,8 @@ class Model(pl.LightningModule):
             self.test_total += y.size(0)
         self.test_preds.append(y_hat.detach().cpu())
         self.test_gts.append(y.detach().cpu())
-        
+        self.test_ids.extend(list(batch.get("id", [])))
+
         return loss
 
     def on_test_epoch_end(self):
@@ -683,9 +705,11 @@ class Model(pl.LightningModule):
             all_gts = torch.cat(self.test_gts, dim=0).cpu().numpy()
             self.test_preds.clear()
             self.test_gts.clear()
-            # Save for external use
+            # Save for external use ('ids' added for the optional prediction files; the two original keys are unchanged)
             self.test_outputs_npz = {'predictions': all_preds,
-                                     'targets': all_gts}
+                                     'targets': all_gts,
+                                     'ids': list(self.test_ids)}
+            self.test_ids.clear()
 
         avg_loss = torch.stack(self.test_losses).mean().item()
         self.log('test_loss', avg_loss, prog_bar=True)

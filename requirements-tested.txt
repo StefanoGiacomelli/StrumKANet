@@ -1,0 +1,19 @@
+# Versions with which the smoke tests and the regeneration scripts of this repository were run
+# (October 2026, macOS arm64, CPU, Python 3.10.11; the 2026 recording-disjoint re-evaluation used the same versions).
+# This is NOT the environment of the 2025
+# training campaign (Linux host, Python 3.11, one CUDA GPU, Lightning 2.x; other versions not recorded).
+# Not covered by this environment: essentia, rp_extract, the Strummin' dataset, the checkpoints.
+torch==2.13.0
+torchaudio==2.11.0
+pytorch-lightning==2.6.5
+numpy==1.26.4
+pandas==2.3.3
+scipy==1.15.3
+librosa==0.11.0
+soundfile==0.14.0
+tensorboard==2.21.0
+torchinfo==1.8.0
+pyyaml==6.0.3
+matplotlib==3.10.9
+scikit-learn==1.7.2
+tqdm==4.68.4

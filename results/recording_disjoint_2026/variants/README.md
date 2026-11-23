@@ -1,0 +1,23 @@
+# Variants of the recipe and of the descriptors under the recording-disjoint protocol (new run, 3 November 2026)
+
+Every number here is a **new run**; it is shown next to, never in place of, the stored 2025 results and the 2026 recording-disjoint re-evaluation (`../primary_seed42/`, `../recording_seed43/`, `../recording_seed44/`, `../control_*`). Question, design, decision rule, results, replication, reading and caveats: [`docs/PROTOCOL.md`](../../../docs/PROTOCOL.md), section 13. Code: [`main_variants.py`](../../../main_variants.py) (runs) and [`analysis/variants_report.py`](../../../analysis/variants_report.py) (tables).
+
+| Folder | Partition | Contents |
+|---|---|---|
+| `seed42/` | recording-disjoint folds, partition seed 42 (the partition file equals that of `../primary_seed42/`) | two stored RP networks (16 channels 5x5, 32 channels 7x7) with recipe variants; two stored tempogram-ratio networks; heads on descriptor vectors (`VEC_*`); logistic regressions on cached descriptors; 57 methods |
+| `seed43/`, `seed44/` | partition seeds 43 and 44 (the partition files equal those of `../recording_seed43/`, `../recording_seed44/`) | replication of the candidates that gained at seed 42; 15 methods each |
+| `control_performer_seed42/`, `control_excerpt_seed42/` | performer-disjoint (stricter) and excerpt-level (looser) folds of `../control_*_seed42/` | logistic regressions on RP, tempogram-ratio statistics, onset scale features and both |
+| `permutation_control.csv` | the folds of seed 42, labels permuted among the recordings (5 permutations) | the same logistic regressions: the accuracy falls to the chance level |
+| `replication/` | built by `analysis/variants_report.py --replication` | `replication.csv` and `replication.md`: Table 13.5 of the protocol sheet (seeds 42, 43, 44 and the mean difference over the three partitions) |
+| `*/report/` | built by `analysis/variants_report.py` against the stored run of the same partition | `variants.csv` (one row per method with the paired differences to the stored WavKAN head of the same configuration, the stored head of the same kind and the stored RP + WavKAN mean), `variants_pooled.csv` (recipe variants pooled over the RP configurations), `variants.md` |
+
+Each run folder has the files of `../primary_seed42/`: `summary.csv`, `folds.csv`, `confusion_matrices.json`, `partition_k5_seed<seed>.json`, `predictions/<method>.csv.gz` (one row per held-out excerpt: id, recording, label, prediction, three probabilities, fold) and `PROVENANCE.json`. Methods are named `<configuration>|head=<head>|variant=<variant>` (`VEC_<set>` configurations are heads on a standardized descriptor vector; the variant names are those of `main_variants.py`) or `classical:<name>|descriptor=<inputs>` (standardization and logistic regression of the stored baseline).
+
+Notes on the files:
+
+* The per-run result files (`runs/*.json`, with the validation history and the probabilities that are also in `predictions/`), the worker logs, the claim files and the checkpoints are not part of the repository. `PROVENANCE.json` lists every run (device, threads, timestamps, fit time, stop and best epoch, accuracy of every member of an ensemble) and the commands that produced the folder; the absolute paths of the machine that ran the jobs are replaced by `<scratch>`.
+* The runs executed snapshots of `main_variants.py` taken while the script was completed; the `code_sha256` entry of a `PROVENANCE.json` is that of the file that wrote the last outputs of the folder (the shipped file). The shipped file differs from the snapshot of the last waves of runs in the documentation string, one unused import and the name of the checkpoint folder (it now contains the partition seed); a re-run of 15 runs with the shipped file reproduced them bit for bit (docs/PROTOCOL.md, section 13.6).
+* With two CPU threads, the setting of the stored run, the `base` recipe of `main_variants.py` reproduces the stored predictions of the MLP head on the RP network of 16 channels and 5x5 kernels exactly (five folds); the variants were run with one thread, which changes the numerical trajectory of a run (`base` with one thread: 0.475 against the stored 0.485).
+* The logistic-regression rows are produced by scikit-learn 1.7.2 with the stored recipe; `classical:lr_rp|descriptor=rp` reproduces the stored baseline `baseline:logreg|descriptor=rp` of `../primary_seed42/` (0.441 [0.415, 0.467]; paired difference +0.000 [-0.002, +0.002]).
+* The two repeated rows of `dataset.csv` contribute their excerpts twice, always in the same fold, as in `../primary_seed42/`.
+* `../SHA256SUMS` lists every file of the parent folder, this folder included.

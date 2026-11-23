@@ -1,0 +1,83 @@
+cff-version: 1.2.0
+message: "If you use StrumKANet in academic work, please cite the IEEE IS2 2025 paper (preferred-citation) and, when you use the data, the Strummin' Dataset."
+title: "StrumKANet: A Kolmogorov-Arnold NAS Framework for Strumming Pattern Recognition"
+type: software
+license: CC-BY-4.0
+repository-code: "https://github.com/StefanoGiacomelli/StrumKANet"
+url: "https://github.com/StefanoGiacomelli/StrumKANet"
+keywords:
+  - strumming pattern recognition
+  - rhythm descriptors
+  - Kolmogorov-Arnold networks
+  - wavelet KAN
+  - neural architecture search
+  - music information retrieval
+authors:
+  - family-names: Pennese
+    given-names: Marco
+  - family-names: Giacomelli
+    given-names: Stefano
+    email: stefano.giacomelli@graduate.univaq.it
+    orcid: "https://orcid.org/0009-0009-0438-1748"
+    affiliation: "Department of Information Engineering, Computer Science and Mathematics (DISIM), University of L'Aquila"
+  - family-names: Rinaldi
+    given-names: Claudia
+abstract: >-
+  PyTorch/Lightning pipeline for three-class guitar strumming-pattern recognition from pop/rock
+  recordings: rhythm descriptors (onset strength, tempogram, tempogram ratio, beats, Rhythm
+  Patterns and related statistics, Essentia ticks), one- and two-dimensional convolutional encoders
+  with optional attention, a wavelet Kolmogorov-Arnold (Wav-KAN) classification head, and the
+  scripted 468-configuration NAS/HPO campaign with its stored logs and results. It supports the
+  IEEE IS2 2025 paper and includes a recording-disjoint re-evaluation of the selected models (2026).
+  Research activities were mainly funded under the Ministerial Decree (DM) 118/2023, Mission 4,
+  Component 1, Investment 4.1 of the National Recovery and Resilience Plan (PNRR) - "PNRR
+  Research" - CUP: E11I23000100001. Research activities and publications were also partially
+  supported by the European Union under the Italian National Recovery and Resilience Plan (PNRR)
+  of NextGenerationEU, within the partnership on "Telecommunications of the Future" (PE00000001 -
+  RESTART).
+preferred-citation:
+  type: conference-paper
+  title: "A Kolmogorov Arnold Network NAS Framework for Strumming Pattern Recognition in Technology-Enhanced Pop/Rock Music Education"
+  authors:
+    - family-names: Pennese
+      given-names: Marco
+    - family-names: Giacomelli
+      given-names: Stefano
+    - family-names: Rinaldi
+      given-names: Claudia
+  collection-title: "2025 IEEE 6th International Symposium on the Internet of Sounds (IS2)"
+  year: 2025
+  start: 1
+  end: 10
+  doi: "10.1109/IS264627.2025.11284580"
+references:
+  - type: data
+    title: "The Strummin' Dataset: An International Pop/Rock Curated Audio Selection for Strumming Patterns Recognition"
+    authors:
+      - family-names: Pennese
+        given-names: Marco
+      - family-names: Giacomelli
+        given-names: Stefano
+      - family-names: Rinaldi
+        given-names: Claudia
+    publisher:
+      name: Zenodo
+    year: 2025
+    doi: "10.5281/zenodo.15862786"
+    url: "https://doi.org/10.5281/zenodo.15862786"
+  - type: conference-paper
+    title: "From Neural Rhythm Classification to Embodied Sense-Making: Strummin' Gym as a Browser-Based IoMusT Environment for Guitar Strumming Practice"
+    authors:
+      - family-names: Pennese
+        given-names: Marco
+      - family-names: Giacomelli
+        given-names: Stefano
+      - family-names: Rinaldi
+        given-names: Claudia
+    collection-title: "2026 IEEE 7th International Symposium on the Internet of Sounds (IS2)"
+    location:
+      name: "Cannes, France"
+    year: 2026
+    status: in-press
+    notes: "Accepted for presentation."
+    url: "https://internetofsounds2026.ieee-internetofsounds.org/"

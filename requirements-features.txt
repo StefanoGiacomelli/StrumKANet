@@ -1,0 +1,6 @@
+# Optional feature extractors (not installable in every environment).
+#   essentia  -> descriptors 'ticks' and 'bpm_estimates' (data_processing.py, Essentia RhythmExtractor2013)
+#   rp_extract is NOT a pip package: clone it into the repository root (see README, "Installation"):
+#       git clone https://github.com/tuwien-musicir/rp_extract.git
+#   Needed for the descriptors 'rp', 'rh', 'tssd', 'trh'. The commit used in 2025 was not recorded.
+essentia

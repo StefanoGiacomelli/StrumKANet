@@ -1,0 +1,3 @@
+smoothing,n_runs,median_accuracy_pct,median_loss
+False,234,42.4242424242,1.07590377331
+True,234,42.7807486631,1.07903963327

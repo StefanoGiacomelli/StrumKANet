@@ -1,3 +1,4 @@
+import argparse
 import os
 import csv
 import re
@@ -12,6 +13,7 @@ from pytorch_lightning import Trainer, seed_everything
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
 from pytorch_lightning.loggers import TensorBoardLogger
 from data import PopMusicDataModule
+from evaluation import ProtocolOptions, add_protocol_arguments, options_from_args, save_test_outputs
 from data_processing import rhythm_features
 from model import Model, init_modules
 from globals import SEED, MAIN_FOLDER, CSV_PATH, AUDIO_FOLDER, SPLIT_RATIO, SHUFFLE, BATCH_SIZE, NUM_WORKERS, FEATURES_MAP, LR
@@ -87,9 +89,19 @@ def configure_features_and_preprocessor(config_data: dict):
 
 
 # ----------------- MAIN -----------------
-def main():
-    os.makedirs(LOGS_DIR, exist_ok=True)
-    os.makedirs(RESULTS_DIR, exist_ok=True)
+def main(options=None):
+    """Stage 2. With ``options=None`` (or ``ProtocolOptions()``) the stored 2025 protocol is reproduced exactly:
+    unseeded excerpt-level split re-drawn on every setup() call, test on the final-epoch weights."""
+    options = options or ProtocolOptions()
+    namespace = options.namespace()                      # '' for the legacy protocol: stored files are never mixed with new runs
+    for message in options.warnings():
+        print(f"[WARNING] {message}")
+    logs_dir = os.path.join(LOGS_DIR, namespace) if namespace else LOGS_DIR
+    results_dir = os.path.join(RESULTS_DIR, namespace) if namespace else RESULTS_DIR
+    checkpoints_dir = os.path.join(MAIN_FOLDER, "checkpoints", namespace) if namespace else os.path.join(MAIN_FOLDER, "checkpoints")
+    csv_training_results = os.path.join(results_dir, "training_results.csv")
+    os.makedirs(logs_dir, exist_ok=True)
+    os.makedirs(results_dir, exist_ok=True)
 
     df = pd.read_csv(CSV_NAS_RESULTS)
     df = df[df["test_status"] == True]
@@ -102,7 +114,8 @@ def main():
     config_files = sorted(glob(os.path.join(CONFIG_DIR, "*.yaml")))
     config_map = {os.path.splitext(os.path.basename(p))[0]: p for p in config_files}
 
-    completed_experiments = load_completed_experiments(CSV_TRAINING_RESULTS)
+    # The results CSV stores unsanitized ids ("[7, 7]"), the loop compares sanitized ones ("7-7"): sanitize both sides.
+    completed_experiments = {sanitize_experiment_id(i) for i in load_completed_experiments(csv_training_results)}
 
     # Check if experiment needs to be skipped
     for i, exp_id in enumerate(experiment_ids):
@@ -123,7 +136,7 @@ def main():
         try:
             set_all_seeds(SEED)
 
-            logger = TensorBoardLogger(save_dir=os.path.join(LOGS_DIR, config["task"]), name=exp_id_sanitized)
+            logger = TensorBoardLogger(save_dir=os.path.join(logs_dir, config["task"]), name=exp_id_sanitized)
 
             features, preprocessor = configure_features_and_preprocessor(config["data"])
             data_module = PopMusicDataModule(csv_path=CSV_PATH,
@@ -136,7 +149,10 @@ def main():
                                              split_ratio=SPLIT_RATIO,
                                              shuffle=SHUFFLE,
                                              batch_size=BATCH_SIZE,
-                                             num_workers=NUM_WORKERS)
+                                             num_workers=NUM_WORKERS,
+                                             split_mode=options.split_mode,
+                                             split_seed=options.split_seed,
+                                             partition_file=options.partition_file)
             data_module.setup()
 
             batch = next(iter(data_module.train_dataloader()))
@@ -148,7 +164,7 @@ def main():
                           lr=LR,
                           config=config)
 
-            checkpoint_cb = ModelCheckpoint(dirpath=os.path.join(MAIN_FOLDER, "checkpoints"),
+            checkpoint_cb = ModelCheckpoint(dirpath=checkpoints_dir,
                                             filename=f"{exp_id_sanitized}" + "-{epoch:02d}-{val_acc:.4f}",
                                             monitor="val_acc",
                                             mode="max",
@@ -157,7 +173,7 @@ def main():
 
             early_stop_cb = EarlyStopping(monitor="val_acc", patience=20, mode="max", verbose=True)
 
-            trainer = Trainer(accelerator='auto',
+            trainer = Trainer(accelerator=options.accelerator,
                               max_epochs=50,
                               callbacks=[checkpoint_cb, early_stop_cb],
                               logger=logger,
@@ -166,16 +182,20 @@ def main():
                               log_every_n_steps=10)
 
             trainer.fit(model, datamodule=data_module)
-            trainer.test(model, datamodule=data_module)
+            # Legacy: no ckpt_path, i.e. the final-epoch weights. Option --eval-ckpt best: the best-validation checkpoint.
+            test_kwargs = {"ckpt_path": "best"} if options.eval_ckpt == "best" else {}
+            trainer.test(model, datamodule=data_module, **test_kwargs)
 
             
             test_summary = model.test_metrics_summary
             stopped_epoch = trainer.current_epoch
-            append_training_result(CSV_TRAINING_RESULTS,
+            append_training_result(csv_training_results,
                                    exp_id,
                                    test_summary.get("test_loss", -1.0),
                                    test_summary.get("test_metric", -1.0),
                                    stopped_epoch)
+            if options.save_predictions:
+                save_test_outputs(model.test_outputs_npz, os.path.join(results_dir, "predictions"), exp_id_sanitized)
 
             print(f"[SUCCESS] {exp_id_sanitized}: Completed.")
 
@@ -185,4 +205,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Stage 2: retrain the 14 selected configurations (default: the stored 2025 protocol).")
+    add_protocol_arguments(parser, stage=2)
+    main(options_from_args(parser.parse_args()))

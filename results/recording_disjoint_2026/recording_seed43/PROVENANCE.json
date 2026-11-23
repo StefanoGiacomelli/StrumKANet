@@ -1,0 +1,337 @@
+{
+  "NEW_RUN": "recording-disjoint re-evaluation; report next to, never in place of, the stored 2025 results",
+  "code_sha256": {
+    "WavKAN.py": "340b0e7f043858753fcde70d7006493e7dce63711594b642ce55a721955c931d",
+    "data.py": "da66dde7394f1448f4a7c91d1a7062b373bc946b950f3ad67863e77f8c431f3c",
+    "data_processing.py": "c26e85f72a1f6ba2f864d4ce1b39dc9e773f46045d668101e7b37c850e6fef0c",
+    "evaluation.py": "c0ea594ea694cead77d21d90106b26dad86e9f495319af0952062d0b0f99e252",
+    "feature_cache.py": "5b6c362a00e7cb12ffbf95941a874560dac6c824385a9bb2824f917c9168e012",
+    "globals.py": "0455f2f3bbb0f548f1d1cb87002751b4622aacdc669a86d4b1efc422da561dd7",
+    "main_recording_disjoint.py": "0f8bfe0788a4203c9eab01edea5c907f1b283290a91e367a7a2866b30ce8a610",
+    "model.py": "1bc5dafae817bbbf4693d6f6446b7be480b5fff8225097002b6a8fc446883a74",
+    "splits.py": "029d14841b07a444a7c098189f87a3e46efa1b36383c17bc940a98e3298c48ec"
+  },
+  "command": "python main_recording_disjoint.py --csv <scratch>/data/dataset/dataset.csv --audio <scratch>/data/dataset/file_audio/ --cache-dir <scratch>/run/cache --checkpoints <scratch>/run/checkpoints --accelerator cpu --workers 5 --threads 2 --no-nnpack --cache-workers 8 --bootstrap 2000 --note dataset_zenodo_record=https://doi.org/10.5281/zenodo.15862786 --note dataset_archive_md5=7eb77b79a6a05839cf671039acd8f154 --note dataset_archive_sha256=cc2637d0163b7c96cd7dcb118c2d7fd6bbbb9b54269bdc70b0bd5a9abca7b753 --note rp_extract_repository=https://github.com/tuwien-musicir/rp_extract --note dataset_extraction=dataset.csv and file_audio/*.wav extracted with Python zipfile (CRC verified); 22 file names re-decoded from CP437 to UTF-8 (accents) --note launched_by=run_all.sh (scratch wrapper, not part of the repository) --out <scratch>/run/results/recording_seed43 --seed 43 --heads kan --configs ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength",
+  "configurations": [
+    "ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp",
+    "ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp",
+    "ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength"
+  ],
+  "descriptors_cached_now": [],
+  "environment": {
+    "hardware": {
+      "cpu": "Apple M4 Pro",
+      "load_average_1_5_15_min": [
+        27.71,
+        21.24,
+        16.46
+      ],
+      "logical_cpus": 14
+    },
+    "load_average_at_start": [
+      25.11,
+      15.56,
+      12.86
+    ],
+    "numpy": "1.26.4",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "python": "3.10.11",
+    "torch": "2.13.0"
+  },
+  "generated_utc": "2026-10-28T03:56:10Z",
+  "inputs": {
+    "cache_index": {
+      "path": "<scratch>/run/cache/index.json",
+      "sha256": "32324eeaa0000109bbfa7949f90b70007797ced53ee9ad64dfac7684cf364c99"
+    },
+    "dataset_csv": {
+      "path": "<scratch>/data/dataset/dataset.csv",
+      "sha256": "45c096d88070011944bf464718642fd710e2095d2a30c26e19b778dff7cdd022"
+    },
+    "descriptor_caches": {
+      "onset_strength": "a026d1dd3e4ff57fc386744083126ac129138eec47968ca06354e85039e19a1d",
+      "rp": "30a9b5a3814c8ae07742f8f71dd57e0ba7b1b63d7c15a8a8a1fbad141bc425cd"
+    }
+  },
+  "notes": {
+    "dataset_archive_md5": "7eb77b79a6a05839cf671039acd8f154",
+    "dataset_archive_sha256": "cc2637d0163b7c96cd7dcb118c2d7fd6bbbb9b54269bdc70b0bd5a9abca7b753",
+    "dataset_extraction": "dataset.csv and file_audio/*.wav extracted with Python zipfile (CRC verified); 22 file names re-decoded from CP437 to UTF-8 (accents)",
+    "dataset_zenodo_record": "https://doi.org/10.5281/zenodo.15862786",
+    "launched_by": "run_all.sh (scratch wrapper, not part of the repository)",
+    "rp_extract_repository": "https://github.com/tuwien-musicir/rp_extract"
+  },
+  "outputs": {
+    "configs.json": "c599d04f84e68978d2ac5133abac789beaea8e52a192996964c405fb5b5b7cac",
+    "confusion_matrices.json": "98570fff66bf80f748b26f5fbacc3b099ecfa2092282e0a845b1edd9b265b1e3",
+    "folds.csv": "d297ff4477d6c54c81ef591b13e00a8892c5b46651426ed0015f27ce2032df3d",
+    "partition_k5_seed43.json": "1524c8a74187001a88ae81f9fd4bf72e4756ecf641b4ea37e5fb2663b3198bb9",
+    "predictions/ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength_head=kan.csv": "dc71cfd636a91f15a47baf8c5a1607033454a93a5821a1dbf57547f963a1b1f5",
+    "predictions/ENC_chs16_ks__5_5__att_None_smooth_False_rp_head=kan.csv": "75289c8b01e33ff05020b0ab008f283c07d0cf8f429599f58ac08ef8dde12d14",
+    "predictions/ENC_chs32_ks__7_7__att_None_smooth_False_rp_head=kan.csv": "850893825c97932f9386d0fc0befde7ff756acf2c441f602e0fe566796baae4a",
+    "predictions/baseline_logreg_descriptor=onset_strength.csv": "d63864fdc90049e5e808c1df0cd16bda353bf00c7285eb92fc4f7f4aa8bdec24",
+    "predictions/baseline_logreg_descriptor=rp.csv": "c9c0dd5ce58884fd9066a6b71cbf0b76feece28ccaff3f129e0a09790c8056b9",
+    "predictions/baseline_majority_descriptor=onset_strength.csv": "e5398ca83baeee56ec55db41aa85207dc8bef8ee66fc2603b0271e5066d2e2d1",
+    "predictions/baseline_majority_descriptor=rp.csv": "e5398ca83baeee56ec55db41aa85207dc8bef8ee66fc2603b0271e5066d2e2d1",
+    "summary.csv": "740842f01c5ee9de9e112ffba31a5641e33c35e442eecfe6e53e4090df23a24e"
+  },
+  "parameters": {
+    "accelerator": "cpu",
+    "baselines": true,
+    "batch_size": 32,
+    "bootstrap": 2000,
+    "folds": 5,
+    "grouping": "recording",
+    "heads": [
+      "kan"
+    ],
+    "max_epochs": 50,
+    "no_nnpack": true,
+    "patience": 20,
+    "seed": 43,
+    "segment_duration": 10.0,
+    "threads_per_worker": 2,
+    "workers": 5
+  },
+  "partition_summary": {
+    "classes": {
+      "0": 2069,
+      "1": 2070,
+      "2": 1465
+    },
+    "excerpts": 5604,
+    "recordings": 255,
+    "test_excerpts_per_fold": [
+      1117,
+      1127,
+      1110,
+      1119,
+      1131
+    ],
+    "test_groups_per_fold": [
+      50,
+      51,
+      50,
+      51,
+      52
+    ],
+    "train_excerpts_per_fold": [
+      3929,
+      3918,
+      3933,
+      3922,
+      3914
+    ],
+    "val_excerpts_per_fold": [
+      558,
+      559,
+      561,
+      563,
+      559
+    ]
+  },
+  "rp_extract": {
+    "file": "<scratch>/downloads/rp_extract_src/rp_extract/rp_extract.py",
+    "git_commit": "f5e6fe68988e16465c6302a6c4969499328eb8a6",
+    "sha256": "dafe2c24213d07ff243da98af4117d88f340ea5e0dbcc75bb3d0fbccd79c6175"
+  },
+  "runs": [
+    {
+      "best_epoch": 36,
+      "device": "cpu",
+      "finished_utc": "2026-10-28T03:45:20Z",
+      "fit_seconds": 1202.3812370300293,
+      "fold": 0,
+      "run": "ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=kan",
+      "started_utc": "2026-10-28T03:25:16Z",
+      "stop_epoch": 50,
+      "threads": 2,
+      "torch": "2.13.0",
+      "worker": "worker0"
+    },
+    {
+      "best_epoch": 0,
+      "device": "cpu",
+      "finished_utc": "2026-10-28T03:34:06Z",
+      "fit_seconds": 527.479022026062,
+      "fold": 1,
+      "run": "ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=kan",
+      "started_utc": "2026-10-28T03:25:16Z",
+      "stop_epoch": 21,
+      "threads": 2,
+      "torch": "2.13.0",
+      "worker": "worker1"
+    },
+    {
+      "best_epoch": 2,
+      "device": "cpu",
+      "finished_utc": "2026-10-28T03:34:52Z",
+      "fit_seconds": 573.4378230571747,
+      "fold": 2,
+      "run": "ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=kan",
+      "started_utc": "2026-10-28T03:25:16Z",
+      "stop_epoch": 23,
+      "threads": 2,
+      "torch": "2.13.0",
+      "worker": "worker2"
+    },
+    {
+      "best_epoch": 13,
+      "device": "cpu",
+      "finished_utc": "2026-10-28T03:39:17Z",
+      "fit_seconds": 838.7253921031952,
+      "fold": 3,
+      "run": "ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=kan",
+      "started_utc": "2026-10-28T03:25:16Z",
+      "stop_epoch": 34,
+      "threads": 2,
+      "torch": "2.13.0",
+      "worker": "worker4"
+    },
+    {
+      "best_epoch": 7,
+      "device": "cpu",
+      "finished_utc": "2026-10-28T03:36:49Z",
+      "fit_seconds": 691.407016992569,
+      "fold": 4,
+      "run": "ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=kan",
+      "started_utc": "2026-10-28T03:25:16Z",
+      "stop_epoch": 28,
+      "threads": 2,
+      "torch": "2.13.0",
+      "worker": "worker3"
+    },
+    {
+      "best_epoch": 30,
+      "device": "cpu",
+      "finished_utc": "2026-10-28T03:45:50Z",
+      "fit_seconds": 703.3932337760925,
+      "fold": 0,
+      "run": "ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan",
+      "started_utc": "2026-10-28T03:34:06Z",
+      "stop_epoch": 50,
+      "threads": 2,
+      "torch": "2.13.0",
+      "worker": "worker1"
+    },
+    {
+      "best_epoch": 0,
+      "device": "cpu",
+      "finished_utc": "2026-10-28T03:39:28Z",
+      "fit_seconds": 275.5531499385834,
+      "fold": 1,
+      "run": "ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan",
+      "started_utc": "2026-10-28T03:34:52Z",
+      "stop_epoch": 21,
+      "threads": 2,
+      "torch": "2.13.0",
+      "worker": "worker2"
+    },
+    {
+      "best_epoch": 3,
+      "device": "cpu",
+      "finished_utc": "2026-10-28T03:42:06Z",
+      "fit_seconds": 315.3651111125946,
+      "fold": 2,
+      "run": "ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan",
+      "started_utc": "2026-10-28T03:36:50Z",
+      "stop_epoch": 24,
+      "threads": 2,
+      "torch": "2.13.0",
+      "worker": "worker3"
+    },
+    {
+      "best_epoch": 43,
+      "device": "cpu",
+      "finished_utc": "2026-10-28T03:50:35Z",
+      "fit_seconds": 677.1582741737366,
+      "fold": 3,
+      "run": "ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan",
+      "started_utc": "2026-10-28T03:39:17Z",
+      "stop_epoch": 50,
+      "threads": 2,
+      "torch": "2.13.0",
+      "worker": "worker4"
+    },
+    {
+      "best_epoch": 7,
+      "device": "cpu",
+      "finished_utc": "2026-10-28T03:45:32Z",
+      "fit_seconds": 361.8075258731842,
+      "fold": 4,
+      "run": "ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan",
+      "started_utc": "2026-10-28T03:39:28Z",
+      "stop_epoch": 28,
+      "threads": 2,
+      "torch": "2.13.0",
+      "worker": "worker2"
+    },
+    {
+      "best_epoch": 2,
+      "device": "cpu",
+      "finished_utc": "2026-10-28T03:47:51Z",
+      "fit_seconds": 343.590322971344,
+      "fold": 0,
+      "run": "ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan",
+      "started_utc": "2026-10-28T03:42:06Z",
+      "stop_epoch": 23,
+      "threads": 2,
+      "torch": "2.13.0",
+      "worker": "worker3"
+    },
+    {
+      "best_epoch": 0,
+      "device": "cpu",
+      "finished_utc": "2026-10-28T03:50:27Z",
+      "fit_seconds": 305.29957914352417,
+      "fold": 1,
+      "run": "ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan",
+      "started_utc": "2026-10-28T03:45:20Z",
+      "stop_epoch": 21,
+      "threads": 2,
+      "torch": "2.13.0",
+      "worker": "worker0"
+    },
+    {
+      "best_epoch": 0,
+      "device": "cpu",
+      "finished_utc": "2026-10-28T03:50:25Z",
+      "fit_seconds": 292.6484808921814,
+      "fold": 2,
+      "run": "ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan",
+      "started_utc": "2026-10-28T03:45:32Z",
+      "stop_epoch": 21,
+      "threads": 2,
+      "torch": "2.13.0",
+      "worker": "worker2"
+    },
+    {
+      "best_epoch": 0,
+      "device": "cpu",
+      "finished_utc": "2026-10-28T03:50:47Z",
+      "fit_seconds": 295.5116629600525,
+      "fold": 3,
+      "run": "ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan",
+      "started_utc": "2026-10-28T03:45:50Z",
+      "stop_epoch": 21,
+      "threads": 2,
+      "torch": "2.13.0",
+      "worker": "worker1"
+    },
+    {
+      "best_epoch": 0,
+      "device": "cpu",
+      "finished_utc": "2026-10-28T03:51:48Z",
+      "fit_seconds": 236.50316309928894,
+      "fold": 4,
+      "run": "ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan",
+      "started_utc": "2026-10-28T03:47:51Z",
+      "stop_epoch": 21,
+      "threads": 2,
+      "torch": "2.13.0",
+      "worker": "worker3"
+    }
+  ],
+  "started_utc": "2026-10-28T03:25:14Z",
+  "wall_clock_seconds": 1856.241066455841
+}

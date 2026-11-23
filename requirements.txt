@@ -1,29 +1,17 @@
-tqdm
-pyyaml
-numpy<2
-resampy
+# StrumKANet - core requirements (everything imported by model.py, data.py, the main_*.py entry points,
+# the analysis/ scripts and tests/). Lower bounds only where the code needs them; the tested set is in
+# requirements-tested.txt. Descriptors that need Essentia and rp_extract: see requirements-features.txt.
+numpy>=1.26,<2          # original constraint kept: numpy<2
 scipy
 pandas
+pyyaml
 matplotlib
+tqdm
 torch
-pytorch-lightning
+torchaudio              # data.py reads audio with torchaudio < 2.9, or with soundfile when torchaudio.info is missing
+pytorch-lightning>=2.2  # the logged runs show the "Mode" column of the Lightning 2.x model summary
 tensorboard
-torchinfo
-torchaudio
-torchmetrics
-scikit_learn
-#git+https://github.com/Blealtan/efficient-kan.git
-essentia
+torchinfo               # imported by model.py (profiling hook, not used at run time)
 librosa
 soundfile
-yt-dlp
-certifi
-brotli
-websockets
-requests
-curl_cffi
-mutagen
-xattr
-pycryptodome
-pycryptodomex
-SecretStorage
+scikit-learn            # logistic-regression baseline of main_recording_disjoint.py

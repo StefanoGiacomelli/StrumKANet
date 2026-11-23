@@ -1,0 +1,16 @@
+descriptor,encoder,n_yaml_files,n_csv_rows,factorization
+raw,1D,48,48,2 channels x 3 kernels x 4 attentions x 2 smoothing = 48
+onset_strength,1D,48,48,2 channels x 3 kernels x 4 attentions x 2 smoothing = 48
+beats,1D,48,48,2 channels x 3 kernels x 4 attentions x 2 smoothing = 48
+ticks,1D,48,48,2 channels x 3 kernels x 4 attentions x 2 smoothing = 48
+bpm_estimates,1D,48,48,2 channels x 3 kernels x 4 attentions x 2 smoothing = 48
+rh,1D,48,48,2 channels x 3 kernels x 4 attentions x 2 smoothing = 48
+tempogram,2D,36,36,2 channels x 3 kernels x 3 attentions x 2 smoothing = 36
+tempogram_ratio,2D,36,36,2 channels x 3 kernels x 3 attentions x 2 smoothing = 36
+rp,2D,36,36,2 channels x 3 kernels x 3 attentions x 2 smoothing = 36
+tssd,2D,36,36,2 channels x 3 kernels x 3 attentions x 2 smoothing = 36
+trh,2D,36,36,2 channels x 3 kernels x 3 attentions x 2 smoothing = 36
+TOTAL 1D descriptors,1D,288,288,6 x 48
+TOTAL 2D descriptors,2D,180,180,5 x 36
+TOTAL,,468,468,468 = 288 + 180
+reading without raw and ticks (4 x 48 + 5 x 36),,372,372,the 372 of the published table

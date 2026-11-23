@@ -1,0 +1,121 @@
+{
+  "audio": {
+    "audio_bytes_distinct_files": 5936021940,
+    "duration_max_s": 424.9367916666667,
+    "duration_mean_over_rows_s": 242.7762793450065,
+    "duration_min_s": 91.97333333333333,
+    "duration_total_distinct_files_hms": "17:10:33",
+    "duration_total_over_rows_hms": "17:19:53",
+    "duration_total_over_rows_s": 62393.50379166666,
+    "formats_over_rows": {
+      "48000 Hz, 1 channel(s), PCM_16, WAV": 257
+    }
+  },
+  "classes": {
+    "distinct_audio_files": {
+      "0": 87,
+      "1": 99,
+      "2": 69
+    },
+    "rows": {
+      "0": 89,
+      "1": 99,
+      "2": 69
+    }
+  },
+  "dataset_csv": {
+    "ambiguity_values": {
+      "0": 4,
+      "1": 1,
+      "None": 252
+    },
+    "bytes": 24684,
+    "column_index": {
+      "ambiguity": 7,
+      "bpm_marco": 3,
+      "bpm_songBPM": 5,
+      "bpm_tunebat": 4,
+      "downloaded": 8,
+      "label": 6,
+      "performer": 1,
+      "title": 0,
+      "yt_url": 2
+    },
+    "columns": [
+      "title",
+      "performer",
+      "yt_url",
+      "bpm_marco",
+      "bpm_tunebat",
+      "bpm_songBPM",
+      "label",
+      "ambiguity",
+      "downloaded"
+    ],
+    "downloaded_values": {
+      "True": 257
+    },
+    "header_line": "title,performer,yt_url,bpm_marco,bpm_tunebat,bpm_songBPM,label,ambiguity,downloaded",
+    "label_values_by_row": {
+      "0": 89,
+      "1": 99,
+      "2": 69
+    },
+    "line_terminator": "CRLF",
+    "rows": 257,
+    "sha256": "45c096d88070011944bf464718642fd710e2095d2a30c26e19b778dff7cdd022"
+  },
+  "excerpts": {
+    "distinct_excerpt_ids": 5553,
+    "excerpt_level_majority_rate": 0.3693790149892934,
+    "excerpts_per_class": {
+      "0": 2069,
+      "1": 2070,
+      "2": 1465
+    },
+    "per_row_max": 52,
+    "per_row_mean": 21.976470588235294,
+    "per_row_median": 22,
+    "per_row_min": 7,
+    "pool_size_N": 5604,
+    "recording_level_majority_rate_distinct_files": 0.38823529411764707,
+    "rule": "windows 1 .. W-2 of the W complete windows (first and last dropped); recordings with W <= 2 give none",
+    "window_s": 10.0
+  },
+  "legacy_partition_sizes": {
+    "steps_per_epoch_batch_32": 141,
+    "test": 561,
+    "train": 4483,
+    "val": 560
+  },
+  "performers": {
+    "distinct_casefolded": 138,
+    "max_recordings_of_one_performer": 12,
+    "performers_with_more_than_one_class": 37,
+    "recordings_by_those_performers": 176,
+    "with_two_or_more_recordings": 57
+  },
+  "recordings": {
+    "distinct_audio_files": 255,
+    "distinct_recordings_after_merging_shared_urls": 254,
+    "downloaded_rows_without_wav": [],
+    "rows": 257,
+    "rows_sharing_a_file": {
+      "Pinguini_tattici_nucleari-Ringo_Starr": 2,
+      "Seal-Crazy": 2
+    },
+    "urls_shared_by_several_rows": {
+      "https://www.youtube.com/watch?v=1pRPXIC4Vtk": [
+        "Cesare Cremonini - Buon viaggio",
+        "Cesare Cremonini - Buon viaggio (share the love)"
+      ],
+      "https://www.youtube.com/watch?v=4Fc67yQsPqQ": [
+        "Seal - Crazy"
+      ],
+      "https://www.youtube.com/watch?v=J3n4CrZxu3g": [
+        "Pinguini tattici nucleari - Ringo Starr"
+      ]
+    },
+    "wav_files_in_folder": 255
+  }
+}

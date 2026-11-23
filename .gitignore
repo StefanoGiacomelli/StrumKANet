@@ -7,3 +7,11 @@ experiments/checkpoints/
 rp_extract/
 .env
 .venv
+venv/
+.DS_Store
+*.ckpt
+lightning_logs/
+.ipynb_checkpoints/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/

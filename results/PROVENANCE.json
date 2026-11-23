@@ -1,0 +1,620 @@
+{
+  "command": "python analysis/regenerate_results.py",
+  "environment": {
+    "pandas": "2.3.3",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "python": "3.10.11",
+    "pyyaml": "6.0.3",
+    "torch": "2.13.0"
+  },
+  "generated_utc": "2026-10-28T08:22:17Z",
+  "notes": [
+    "Derived tables only: nothing here replaces or alters an original result in experiments/results/.",
+    "Bootstrap intervals are seeded and the pairing order is sorted, so they are reproducible bit for bit.",
+    "Columns marked 'model' in stage2_table.csv apply the 80 % training-overlap model of docs/PROTOCOL.md; they are not measurements."
+  ],
+  "repository": "StrumKANet; stored inputs under experiments/ are read-only for these scripts",
+  "steps": [
+    {
+      "checks": [
+        {
+          "check": "rows in hp_search_results.csv",
+          "observed": 468,
+          "pass": true,
+          "published_or_expected": 468
+        },
+        {
+          "check": "all test_status True",
+          "observed": true,
+          "pass": true,
+          "published_or_expected": true
+        },
+        {
+          "check": "union of the two top-10 lists",
+          "observed": 14,
+          "pass": true,
+          "published_or_expected": 14
+        },
+        {
+          "check": "overlap of the two top-10 lists",
+          "observed": 6,
+          "pass": true,
+          "published_or_expected": 6
+        },
+        {
+          "check": "union equals the 14 ids of training_results.csv",
+          "observed": true,
+          "pass": true,
+          "published_or_expected": true
+        },
+        {
+          "check": "median accuracy, smoothing off (%)",
+          "observed": 42.42,
+          "pass": true,
+          "published_or_expected": 42.42
+        },
+        {
+          "check": "median accuracy, smoothing on (%)",
+          "observed": 42.78,
+          "pass": true,
+          "published_or_expected": 42.78
+        },
+        {
+          "check": "median loss, smoothing off",
+          "observed": 1.0759,
+          "pass": true,
+          "published_or_expected": 1.0759
+        },
+        {
+          "check": "median loss, smoothing on",
+          "observed": 1.079,
+          "pass": true,
+          "published_or_expected": 1.079
+        },
+        {
+          "check": "YAML files in configs/pattern",
+          "observed": 468,
+          "pass": true,
+          "published_or_expected": 468
+        },
+        {
+          "check": "grid = 6 x 48 + 5 x 36",
+          "observed": [
+            288,
+            180
+          ],
+          "pass": true,
+          "published_or_expected": [
+            288,
+            180
+          ]
+        },
+        {
+          "check": "rows without raw and ticks (published table)",
+          "observed": 372,
+          "pass": true,
+          "published_or_expected": 372
+        },
+        {
+          "check": "epochs per YAML (all 1)",
+          "observed": {
+            "1": 468
+          },
+          "pass": true,
+          "published_or_expected": {
+            "1": 468
+          }
+        },
+        {
+          "check": "experiment_id equals file stem",
+          "observed": 0,
+          "pass": true,
+          "published_or_expected": 0
+        }
+      ],
+      "inputs": [
+        {
+          "bytes": 42345,
+          "path": "experiments/results/hp_search_results.csv",
+          "sha256": "9efc78603abf6efe9ed596e89aed58e503b4d1f775bfc2ecdfffd7e81a3375d8"
+        },
+        {
+          "bytes": 1356,
+          "path": "experiments/results/training_results.csv",
+          "sha256": "cc872c27396ff2aa12946416085cc41cf4ad811652a346617d0318f66b4fbab2"
+        },
+        {
+          "configs/pattern/*.yaml": {
+            "example": "experiments/configs/pattern/ENC_chs16_ks_3_att_None_smooth_False_beats.yaml",
+            "files": 468,
+            "sha256_of_sorted_name_hash_lines": "63a58c968c41e49a88ea56eaface2f22f7050ee8ebb84225ae74a0783a5ef1c8"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "bytes": 49991,
+          "path": "results/stage1_runs.csv",
+          "sha256": "0ef251631fe2ff8fd43c0859fe7b885c7aa4b3db380931f042c3d447216052a2"
+        },
+        {
+          "bytes": 853,
+          "path": "results/stage1_top10_accuracy.csv",
+          "sha256": "f55ec611fc98d1e3936f7158fa6f0213b959372b120021e1e53072e0102d7a52"
+        },
+        {
+          "bytes": 871,
+          "path": "results/stage1_top10_loss.csv",
+          "sha256": "18d6e9664de63c105f2a9930e52a522a34033dbfe90b36bb7192a2a9dc7280e3"
+        },
+        {
+          "bytes": 992,
+          "path": "results/selection_check.csv",
+          "sha256": "fec97733ad763a6c08163a041f70ca8aab8a666d72051ac4fb7499d2ccec0f26"
+        },
+        {
+          "bytes": 124,
+          "path": "results/stage1_medians_by_smoothing.csv",
+          "sha256": "137af56f0614f5f98485b9273fbbc1d780b8d60ed393cf5115e5d5026c4ea6ea"
+        },
+        {
+          "bytes": 703,
+          "path": "results/stage1_descriptor_medians.csv",
+          "sha256": "27e1ed1029f286f97e93c94fa2b470a01fce4b0e0d0343a3c5565c8bf990d2b1"
+        },
+        {
+          "bytes": 1066,
+          "path": "results/stage1_grid_composition.csv",
+          "sha256": "33c0461d64f5c2a61e06758a7f0fbb3c704b56ee9d8e43b8c3379897c986b191"
+        },
+        {
+          "bytes": 2985,
+          "path": "results/stage1_paired_analysis.csv",
+          "sha256": "6ed3ec32adac2cf67e892818be166f7870a5253159723451be6542a0b47cb09a"
+        },
+        {
+          "bytes": 2803,
+          "path": "results/stage1_summary.json",
+          "sha256": "4e077a6bb6bafeef3f9ee04670a128068aff4c926e1694e454c170b0bb0c6a20"
+        }
+      ],
+      "parameters": {
+        "bootstrap_resamples": 2000,
+        "bootstrap_seed": 1,
+        "top_k": 10
+      },
+      "script": "analysis/stage1_grid.py",
+      "script_sha256": "ac251fd6fa87e3bba77af0dd32fcd8e48f56081f4f8aa33d3428bb1ffbf0968f"
+    },
+    {
+      "checks": [
+        {
+          "check": "validation accuracies are k/n for n =",
+          "observed": [
+            560
+          ],
+          "pass": true,
+          "published_or_expected": [
+            560
+          ]
+        },
+        {
+          "check": "test accuracies are k/n for n =",
+          "observed": [
+            561
+          ],
+          "pass": true,
+          "published_or_expected": [
+            561
+          ]
+        },
+        {
+          "check": "14 runs",
+          "observed": 14,
+          "pass": true,
+          "published_or_expected": 14
+        },
+        {
+          "check": "stop epoch = best epoch index + 21 in every run",
+          "observed": [
+            21
+          ],
+          "pass": true,
+          "published_or_expected": [
+            21
+          ]
+        },
+        {
+          "check": "one validation value per epoch",
+          "observed": true,
+          "pass": true,
+          "published_or_expected": true
+        },
+        {
+          "check": "141 optimizer steps per epoch (B = 32 with 4,483 training excerpts)",
+          "observed": [
+            141.0
+          ],
+          "pass": true,
+          "published_or_expected": [
+            141.0
+          ]
+        },
+        {
+          "check": "nine models above 0.90 (8 RP + 1 OS)",
+          "observed": [
+            9,
+            8
+          ],
+          "pass": true,
+          "published_or_expected": [
+            9,
+            8
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "bytes": 1356,
+          "path": "experiments/results/training_results.csv",
+          "sha256": "cc872c27396ff2aa12946416085cc41cf4ad811652a346617d0318f66b4fbab2"
+        },
+        {
+          "bytes": 42345,
+          "path": "experiments/results/hp_search_results.csv",
+          "sha256": "9efc78603abf6efe9ed596e89aed58e503b4d1f775bfc2ecdfffd7e81a3375d8"
+        },
+        {
+          "bytes": 80703,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_7-7_att_None_smooth_True_rp/version_0/events.out.tfevents.1751713668.debian.129189.0",
+          "sha256": "e39b9c87a38d087ba89967d473ad6d317fa457d9a1778e01b728c5037cf8e237"
+        },
+        {
+          "bytes": 1976,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_7-7_att_None_smooth_True_rp/version_0/events.out.tfevents.1751725374.debian.129189.1",
+          "sha256": "aba8347e90ea2c11c29e581658b55d9fe8267030b66da173f75275086745429e"
+        },
+        {
+          "bytes": 668,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_7-7_att_None_smooth_True_rp/version_0/hparams.yaml",
+          "sha256": "d360a951869e408ee6ada1a64e1d909bacc3807cd35307aa1b8867b5b912f32d"
+        },
+        {
+          "bytes": 38856,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_5-5_att_None_smooth_False_rp/version_0/events.out.tfevents.1751725411.debian.129189.2",
+          "sha256": "1b16a6ce53fbcb879c83d7790f943500be97e9e53ddf9f33fecfd6970abeb61b"
+        },
+        {
+          "bytes": 1977,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_5-5_att_None_smooth_False_rp/version_0/events.out.tfevents.1751730871.debian.129189.3",
+          "sha256": "c74abeebccb171b43aebe923686b30269cf2a4fd287bb02dcc2ea5e40ddd6aca"
+        },
+        {
+          "bytes": 670,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_5-5_att_None_smooth_False_rp/version_0/hparams.yaml",
+          "sha256": "7eee8c8f3285b5f823b85d598ae2ed3b6e56e6ac5c4c0d8dbe0b4deeab77285e"
+        },
+        {
+          "bytes": 51770,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_7-7_att_None_smooth_False_rp/version_0/events.out.tfevents.1751730907.debian.129189.4",
+          "sha256": "25f539460d77be9f2494b6a94589c0150a4a6164801f09272a32b12541d2f2ce"
+        },
+        {
+          "bytes": 1977,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_7-7_att_None_smooth_False_rp/version_0/events.out.tfevents.1751738370.debian.129189.5",
+          "sha256": "632c0d96ed6e4ae99fbe52d381b60957dc01c54b5525408f803e78b3520270a4"
+        },
+        {
+          "bytes": 670,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_7-7_att_None_smooth_False_rp/version_0/hparams.yaml",
+          "sha256": "6c50a727ada662a186b2d457fb1d4dd390cbce307134c1594c26ba128e674331"
+        },
+        {
+          "bytes": 51769,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_5-5_att_None_smooth_True_rp/version_0/events.out.tfevents.1751738408.debian.129189.6",
+          "sha256": "b15f8b86420a6e928e76fe0395ea24f2c691885d0ba440921c344d8effef685a"
+        },
+        {
+          "bytes": 1976,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_5-5_att_None_smooth_True_rp/version_0/events.out.tfevents.1751745834.debian.129189.7",
+          "sha256": "ca1022e9d2bcfb32f3b5766f9c6686ccf45fe77b6c6d5b560fa61c2be66eccb2"
+        },
+        {
+          "bytes": 668,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_5-5_att_None_smooth_True_rp/version_0/hparams.yaml",
+          "sha256": "b7138ee5e6bfa3fd9230a9f8ba5b6d672ee682ac287f2f8c0b7b4472777264a8"
+        },
+        {
+          "bytes": 46865,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_7-7_att_None_smooth_True_rp/version_0/events.out.tfevents.1751745870.debian.129189.8",
+          "sha256": "ff2b102bc314497829ba92cc8e438f5ef9f3967d8164e5aaaebe6a070030f21d"
+        },
+        {
+          "bytes": 1976,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_7-7_att_None_smooth_True_rp/version_0/events.out.tfevents.1751752629.debian.129189.9",
+          "sha256": "35a30d9087d95691796d470a9aedc765c28979412afdf24a99baa19f57a6a9b1"
+        },
+        {
+          "bytes": 668,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_7-7_att_None_smooth_True_rp/version_0/hparams.yaml",
+          "sha256": "e2f28d5d6419976b0ac9d73a3b369b132653fe90390d542fa35f7715aaac9983"
+        },
+        {
+          "bytes": 38910,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength/version_0/events.out.tfevents.1751752671.debian.129189.10",
+          "sha256": "ee9382f90dc53c47df29488c1745771b4a55e19c48127030cfdf6c8d9319da61"
+        },
+        {
+          "bytes": 2031,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength/version_0/events.out.tfevents.1751761778.debian.129189.11",
+          "sha256": "8442e3843f3952f0fbd022ab3da48a9b72c5c4f911a4bd18a12e06a4db283195"
+        },
+        {
+          "bytes": 665,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength/version_0/hparams.yaml",
+          "sha256": "c0709a08c2be69c09c7abfb7ac3198d78a0736bbf6b6344b77be37a2f03d1710"
+        },
+        {
+          "bytes": 42089,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_5_att_convattn_smooth_True_rh/version_0/events.out.tfevents.1751761831.debian.129189.12",
+          "sha256": "f64f45c089700451ca374e01b6fcb213a590c09c20dd2898954d0bbe97f88839"
+        },
+        {
+          "bytes": 2006,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_5_att_convattn_smooth_True_rh/version_0/events.out.tfevents.1751767850.debian.129189.13",
+          "sha256": "27d0a5ecf7b9aadc498fb97cf3227cad5ade11b027e674efaa4b63345f19cba1"
+        },
+        {
+          "bytes": 639,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_5_att_convattn_smooth_True_rh/version_0/hparams.yaml",
+          "sha256": "af65f377fd1ac5bc7385a8a5fc68957bd6eb20e512c1d4e6161fb92e44416ea7"
+        },
+        {
+          "bytes": 56602,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_7-7_att_None_smooth_False_tempogram_ratio/version_0/events.out.tfevents.1751767893.debian.129189.14",
+          "sha256": "8aa2328a722168ffbbe3e343d231726afd258dbd8dcf56e9fe441977f7538f9f"
+        },
+        {
+          "bytes": 2003,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_7-7_att_None_smooth_False_tempogram_ratio/version_0/events.out.tfevents.1751781370.debian.129189.15",
+          "sha256": "14638d57ae5091f50ad0f1c28b5da3c9dc592253964f8033c8553d29b9d569c2"
+        },
+        {
+          "bytes": 696,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_7-7_att_None_smooth_False_tempogram_ratio/version_0/hparams.yaml",
+          "sha256": "5686b8b11a063fd53476d19795d6889544a23c078d68456dd08e9c8cf0881a95"
+        },
+        {
+          "bytes": 56576,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_3-3_att_None_smooth_False_rp/version_0/events.out.tfevents.1751781427.debian.129189.16",
+          "sha256": "36f16c47fd9a5f0511c5b62491e9e7ec15d51c6d2ddd399aec5f1125c50b7fa4"
+        },
+        {
+          "bytes": 1977,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_3-3_att_None_smooth_False_rp/version_0/events.out.tfevents.1751789603.debian.129189.17",
+          "sha256": "ce6a60e05ef1bd1a2c8bc2f390ba018061bc85f2a0d2d6ca477d57c5d064b87a"
+        },
+        {
+          "bytes": 670,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_3-3_att_None_smooth_False_rp/version_0/hparams.yaml",
+          "sha256": "f7768617d6944ffa131b7a5cd9615927cfb2bf8ee8bceb0e78a525bef7447bad"
+        },
+        {
+          "bytes": 69509,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_5_att_None_smooth_False_onset_strength/version_0/events.out.tfevents.1751789645.debian.129189.18",
+          "sha256": "649c65eb6d6eb91ec3ae6adf27fdbefed364b12278a0378ba95c4f95764553e7"
+        },
+        {
+          "bytes": 1996,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_5_att_None_smooth_False_onset_strength/version_0/events.out.tfevents.1751806270.debian.129189.19",
+          "sha256": "336381fb608dd6497ecb341f5f081c6995c86ace9940ee226a7c17b7816790cc"
+        },
+        {
+          "bytes": 639,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_5_att_None_smooth_False_onset_strength/version_0/hparams.yaml",
+          "sha256": "51f664b9a37a86c16c9519bfcd2fbf1e48862bf898042a9d29bacbf0fab5e168"
+        },
+        {
+          "bytes": 58320,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_7-7_att_mhsa_smooth_False_tempogram_ratio/version_0/events.out.tfevents.1751806334.debian.129189.20",
+          "sha256": "b0fbf14bbde37428c08cfb34d9367cd67dc74bc57fd8ade6e7b0d5e4da2a3b20"
+        },
+        {
+          "bytes": 2119,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_7-7_att_mhsa_smooth_False_tempogram_ratio/version_0/events.out.tfevents.1751820270.debian.129189.21",
+          "sha256": "baebf6b03c0486d078a408f9f2a1d0247013f73e363d8a014c37f6dc84ef7eac"
+        },
+        {
+          "bytes": 729,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_7-7_att_mhsa_smooth_False_tempogram_ratio/version_0/hparams.yaml",
+          "sha256": "76aef08432153c043f10570434ac494077897538dee463b1b36a4701f71c22d3"
+        },
+        {
+          "bytes": 77500,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_3-3_att_None_smooth_False_rp/version_0/events.out.tfevents.1751820328.debian.129189.22",
+          "sha256": "0d441d80600aab3f2504ea4929832114dba7006d8ac66fbaadbfabda7ceb22db"
+        },
+        {
+          "bytes": 1977,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_3-3_att_None_smooth_False_rp/version_0/events.out.tfevents.1751831535.debian.129189.23",
+          "sha256": "0a3ed7e642c00c9a314a9711850c7d57ef40c20e26a9c05c950a7c97913ad5c8"
+        },
+        {
+          "bytes": 670,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_3-3_att_None_smooth_False_rp/version_0/hparams.yaml",
+          "sha256": "939030ab48ff2e1df5e1e1471abe2184c47f36a5b228743376c7aa5a3ef2fc07"
+        },
+        {
+          "bytes": 46892,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_5-5_att_None_smooth_False_tempogram_ratio/version_0/events.out.tfevents.1751831578.debian.129189.24",
+          "sha256": "8e7f47ca6a105bf7df12e0c9d8fd2f64e4deb3196a12c63560959fcf87948544"
+        },
+        {
+          "bytes": 2003,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_5-5_att_None_smooth_False_tempogram_ratio/version_0/events.out.tfevents.1751842700.debian.129189.25",
+          "sha256": "7b0dca3aeeb13392521f2559f96a8ddb4ae4c6e9e5bf70ef5d5610c46595cbc2"
+        },
+        {
+          "bytes": 696,
+          "path": "experiments/logs/pattern/ENC_chs16_ks_5-5_att_None_smooth_False_tempogram_ratio/version_0/hparams.yaml",
+          "sha256": "10708cceb5e2bc610fc55aee586ab8c3e700f057851fa8f9858dcd043dbe784c"
+        },
+        {
+          "bytes": 69490,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_5-5_att_None_smooth_False_rp/version_0/events.out.tfevents.1751842754.debian.129189.26",
+          "sha256": "5f43940d0e4dba25b589b852a95328d439ef7df98d2f59fc672cbfb984d4b0e7"
+        },
+        {
+          "bytes": 1977,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_5-5_att_None_smooth_False_rp/version_0/events.out.tfevents.1751852778.debian.129189.27",
+          "sha256": "783666d1dbc81cf83fd6a54102716790fe5dd7ffd6f9038e8b884588a0628989"
+        },
+        {
+          "bytes": 670,
+          "path": "experiments/logs/pattern/ENC_chs32_ks_5-5_att_None_smooth_False_rp/version_0/hparams.yaml",
+          "sha256": "325682e44c620333b225ac21bb7625d556c744a10b274e12411bd85c7aa060ac"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes": 6628,
+          "path": "results/stage2_table.csv",
+          "sha256": "feb0bb6f0f55cce2585a5b91aa62fa59719325d554485eb80c046d9f79eae57b"
+        },
+        {
+          "bytes": 43977,
+          "path": "results/stage2_training_curves.csv",
+          "sha256": "58997dc380564e17b71c08273c2fffc7046c835a8e0d1fd959c12ccd8fb9ad28"
+        },
+        {
+          "bytes": 1495,
+          "path": "results/stage2_training_time.csv",
+          "sha256": "b309801ed123bba79d9da5d80f2b39bd28ac4ac90b04f14aa6ef614d4a0f93eb"
+        },
+        {
+          "bytes": 4658,
+          "path": "results/stage2_summary.json",
+          "sha256": "cee1e7991a39f3fe92dd9b9667a5366a20030963e35308f4a7f1291556688f41"
+        }
+      ],
+      "parameters": {
+        "n_test": 561,
+        "n_validation": 560,
+        "overlap_fraction": 0.8
+      },
+      "script": "analysis/stage2_table.py",
+      "script_sha256": "455f918f17d70c4e14c24bb71c503d202b1b4052b86023f341d1b01a34ed13ea"
+    },
+    {
+      "checks": [
+        {
+          "check": "encoder parameters equal the Lightning summary of training_log.txt (14 runs)",
+          "observed": 14,
+          "pass": true,
+          "published_or_expected": 14
+        },
+        {
+          "check": "head parameters equal 12 D + 6 and match the logged summary (14 runs)",
+          "observed": 14,
+          "pass": true,
+          "published_or_expected": 14
+        }
+      ],
+      "inputs": [
+        {
+          "bytes": 78328,
+          "path": "experiments/results/training_log.txt",
+          "sha256": "b047831125d63cb23b4a3adb4e7d791ef829c5d5550913313f8935363f58e006"
+        },
+        {
+          "bytes": 1356,
+          "path": "experiments/results/training_results.csv",
+          "sha256": "cc872c27396ff2aa12946416085cc41cf4ad811652a346617d0318f66b4fbab2"
+        },
+        {
+          "bytes": 547,
+          "path": "experiments/configs/pattern/ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp.yaml",
+          "sha256": "fe445882b40fb2ba2ef205fe7ff84f86f54be87c6f65f18e2b2eea148b646dfa"
+        },
+        {
+          "bytes": 549,
+          "path": "experiments/configs/pattern/ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp.yaml",
+          "sha256": "bc649f97511523c384474b19d26c75adc58fb7ae48bc02ec8960b11c66547045"
+        },
+        {
+          "bytes": 549,
+          "path": "experiments/configs/pattern/ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp.yaml",
+          "sha256": "49800552996842ad426685922fdae8419c32a431fbdbcb98896dc2f52410fc4f"
+        },
+        {
+          "bytes": 547,
+          "path": "experiments/configs/pattern/ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp.yaml",
+          "sha256": "cd74ac1dce23f27eb2681d48cc989e46c1c8230a103b17ce10f9eb329d65babc"
+        },
+        {
+          "bytes": 547,
+          "path": "experiments/configs/pattern/ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp.yaml",
+          "sha256": "46b9cd306a1de3ac5b8461e779e8efadae2591db41e470f68082dac998bcadef"
+        },
+        {
+          "bytes": 565,
+          "path": "experiments/configs/pattern/ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength.yaml",
+          "sha256": "f2a82d2cfb6bbe39c641822164f64b64055abec3cf3a393dc6fca0725ef6828c"
+        },
+        {
+          "bytes": 539,
+          "path": "experiments/configs/pattern/ENC_chs16_ks_5_att_convattn_smooth_True_rh.yaml",
+          "sha256": "2a08c6078ac3007df1427b08354e4a4d4f646141b278747a56317ae3c4ad4872"
+        },
+        {
+          "bytes": 575,
+          "path": "experiments/configs/pattern/ENC_chs32_ks_[7, 7]_att_None_smooth_False_tempogram_ratio.yaml",
+          "sha256": "af01bbb0b1fa4268ceb8385b51eb198b50cb2f82ccdbe91238129c2a5416cda6"
+        },
+        {
+          "bytes": 549,
+          "path": "experiments/configs/pattern/ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp.yaml",
+          "sha256": "16f51187656183287c5b66ceb4e9091573d66ed529fa978ac25b39fe86e1c609"
+        },
+        {
+          "bytes": 541,
+          "path": "experiments/configs/pattern/ENC_chs16_ks_5_att_None_smooth_False_onset_strength.yaml",
+          "sha256": "796b9c1fc16ba25b70c0c8c2dedf4d872875f443aab0ad68fbe2bcf396fcf784"
+        },
+        {
+          "bytes": 604,
+          "path": "experiments/configs/pattern/ENC_chs32_ks_[7, 7]_att_mhsa_smooth_False_tempogram_ratio.yaml",
+          "sha256": "fa36b7ce6aef5123c390ddc90a6ef5591480c3fef81eb4ec11f9af164211039d"
+        },
+        {
+          "bytes": 549,
+          "path": "experiments/configs/pattern/ENC_chs32_ks_[3, 3]_att_None_smooth_False_rp.yaml",
+          "sha256": "da23660966daa2cc102dd7b047fc83ad7cc44760f7906f15890867e4fdfe585e"
+        },
+        {
+          "bytes": 575,
+          "path": "experiments/configs/pattern/ENC_chs16_ks_[5, 5]_att_None_smooth_False_tempogram_ratio.yaml",
+          "sha256": "d5c09f1bf6e04c6fef9731ac14de6c9afd16833ac7f03044e704f64f5bf2095c"
+        },
+        {
+          "bytes": 549,
+          "path": "experiments/configs/pattern/ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp.yaml",
+          "sha256": "453d5e877f05d26762381112ddbfedb616303546891578d848311bc712670f07"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes": 2632,
+          "path": "results/stage2_model_complexity.csv",
+          "sha256": "11127256ba155ac38941863aa3a47e07882f2cabccda697ddd220c15510f34c5"
+        }
+      ],
+      "parameters": {
+        "frames": 938,
+        "torch": "2.13.0"
+      },
+      "script": "analysis/model_complexity.py",
+      "script_sha256": "6b1cba5348a88de437fcc99f5e147778a4ad4a9db260cf6c458c1b99675f5de0"
+    }
+  ]
+}

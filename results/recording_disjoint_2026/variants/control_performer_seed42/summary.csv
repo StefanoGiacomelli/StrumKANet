@@ -1,0 +1,5 @@
+method,n_excerpts,n_recordings,accuracy,accuracy_ci_cluster_low,accuracy_ci_cluster_high,accuracy_wilson_low,accuracy_wilson_high,balanced_accuracy,macro_f1,recall_0,recall_1,recall_2,recording_accuracy,recording_ci_low,recording_ci_high
+classical:lr_rp|descriptor=rp,5604,255,0.432548,0.404648,0.458364,0.419627,0.445561,0.427909,0.427055,0.397777,0.500966,0.384983,0.560784,0.498039,0.623529
+classical:lr_tr|descriptor=tr_stats,5604,255,0.643469,0.603811,0.679965,0.630834,0.655907,0.647408,0.647546,0.60754,0.650725,0.683959,0.752941,0.698039,0.803922
+classical:lr_osscale|descriptor=os_scale,5604,255,0.611884,0.575277,0.649057,0.599053,0.624563,0.610521,0.610567,0.57419,0.65942,0.597952,0.745098,0.690196,0.796078
+classical:lr_tros|descriptor=tr_stats+os_scale,5604,255,0.653283,0.616177,0.690304,0.640721,0.665635,0.657262,0.658016,0.605123,0.672464,0.694198,0.784314,0.733333,0.835294

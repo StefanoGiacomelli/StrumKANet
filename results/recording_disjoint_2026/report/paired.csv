@@ -1,0 +1,81 @@
+contrast,method_a,method_b,difference,ci_low,ci_high,ci_excludes_zero,share_of_resamples_not_positive
+WavKAN head - logistic regression (same descriptor),ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan,baseline:logreg|descriptor=onset_strength,0.0117773,-0.0175952,0.0422536,False,0.23
+WavKAN head - majority class,ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan,baseline:majority|descriptor=onset_strength,0.0206995,-0.0320693,0.0729203,False,0.2265
+WavKAN head - linear head (same encoder),ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan,ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=linear,0.0157031,-0.0113284,0.043815,False,0.13675
+WavKAN head - mlp head (same encoder),ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan,ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=mlp,0.00196288,-0.0301253,0.0342941,False,0.462
+MLP head - linear head (same encoder),ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=mlp,ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=linear,0.0137402,-0.0123235,0.0393188,False,0.15125
+WavKAN head - logistic regression (same descriptor),"ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp|head=kan",baseline:logreg|descriptor=rp,-0.001606,-0.0338291,0.0305282,False,0.5495
+WavKAN head - majority class,"ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp|head=kan",baseline:majority|descriptor=rp,0.0729836,-0.0006988,0.145307,False,0.0265
+WavKAN head - linear head (same encoder),"ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp|head=kan","ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp|head=linear",-0.0231977,-0.0535569,0.00645577,False,0.93675
+WavKAN head - mlp head (same encoder),"ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp|head=kan","ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp|head=mlp",-0.0364026,-0.0689359,-0.00480434,True,0.98925
+MLP head - linear head (same encoder),"ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp|head=mlp","ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp|head=linear",0.0132049,-0.0141373,0.0401936,False,0.166
+WavKAN head - logistic regression (same descriptor),"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan",baseline:logreg|descriptor=rp,-0.00339044,-0.0422014,0.0341592,False,0.57425
+WavKAN head - majority class,"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan",baseline:majority|descriptor=rp,0.0711991,-0.0141501,0.15056,False,0.048
+WavKAN head - linear head (same encoder),"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan","ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=linear",-0.0358672,-0.0713571,-0.00105117,True,0.97925
+WavKAN head - mlp head (same encoder),"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan","ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=mlp",-0.0467523,-0.0863496,-0.00845238,True,0.992
+MLP head - linear head (same encoder),"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=mlp","ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=linear",0.0108851,-0.0105816,0.0324174,False,0.15625
+WavKAN head - logistic regression (same descriptor),"ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp|head=kan",baseline:logreg|descriptor=rp,0.0233762,-0.00925086,0.0555769,False,0.08225
+WavKAN head - majority class,"ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp|head=kan",baseline:majority|descriptor=rp,0.0979657,0.016798,0.178722,True,0.0095
+WavKAN head - linear head (same encoder),"ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp|head=kan","ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp|head=linear",0.0585296,0.00974226,0.108135,True,0.011
+WavKAN head - mlp head (same encoder),"ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp|head=kan","ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp|head=mlp",-0.0164168,-0.0504032,0.0156839,False,0.84825
+MLP head - linear head (same encoder),"ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp|head=mlp","ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp|head=linear",0.0749465,0.0271736,0.12121,True,0.00075
+WavKAN head - logistic regression (same descriptor),"ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp|head=kan",baseline:logreg|descriptor=rp,0.0233762,-0.00310082,0.0500279,False,0.043
+WavKAN head - majority class,"ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp|head=kan",baseline:majority|descriptor=rp,0.0979657,0.0279572,0.166299,True,0.00125
+WavKAN head - linear head (same encoder),"ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp|head=kan","ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp|head=linear",0.0451463,-0.0110706,0.102373,False,0.05925
+WavKAN head - mlp head (same encoder),"ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp|head=kan","ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp|head=mlp",-0.0289079,-0.0571921,-0.000717216,True,0.97675
+MLP head - linear head (same encoder),"ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp|head=mlp","ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp|head=linear",0.0740542,0.0103519,0.139346,True,0.00925
+WavKAN head - logistic regression (same descriptor),"ENC_chs32_ks_[3, 3]_att_None_smooth_False_rp|head=kan",baseline:logreg|descriptor=rp,0.0132049,-0.0292593,0.0547642,False,0.2795
+WavKAN head - majority class,"ENC_chs32_ks_[3, 3]_att_None_smooth_False_rp|head=kan",baseline:majority|descriptor=rp,0.0877944,0.00932829,0.163523,True,0.01425
+WavKAN head - linear head (same encoder),"ENC_chs32_ks_[3, 3]_att_None_smooth_False_rp|head=kan","ENC_chs32_ks_[3, 3]_att_None_smooth_False_rp|head=linear",-0.0110635,-0.0502866,0.0276755,False,0.72
+WavKAN head - mlp head (same encoder),"ENC_chs32_ks_[3, 3]_att_None_smooth_False_rp|head=kan","ENC_chs32_ks_[3, 3]_att_None_smooth_False_rp|head=mlp",-0.026945,-0.0675774,0.0119511,False,0.91375
+MLP head - linear head (same encoder),"ENC_chs32_ks_[3, 3]_att_None_smooth_False_rp|head=mlp","ENC_chs32_ks_[3, 3]_att_None_smooth_False_rp|head=linear",0.0158815,-0.0118649,0.043748,False,0.13175
+WavKAN head - logistic regression (same descriptor),"ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp|head=kan",baseline:logreg|descriptor=rp,0.0347966,0.00680554,0.062456,True,0.0095
+WavKAN head - majority class,"ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp|head=kan",baseline:majority|descriptor=rp,0.109386,0.038663,0.178939,True,0.00075
+WavKAN head - linear head (same encoder),"ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp|head=kan","ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp|head=linear",0.0073162,-0.0221393,0.0359636,False,0.321
+WavKAN head - mlp head (same encoder),"ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp|head=kan","ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp|head=mlp",-0.014454,-0.040029,0.0110824,False,0.858
+MLP head - linear head (same encoder),"ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp|head=mlp","ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp|head=linear",0.0217702,0.00202347,0.0409338,True,0.017
+WavKAN head - logistic regression (same descriptor),"ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=kan",baseline:logreg|descriptor=rp,0.0264097,-0.00463099,0.0552621,False,0.04675
+WavKAN head - majority class,"ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=kan",baseline:majority|descriptor=rp,0.100999,0.024329,0.175574,True,0.00325
+WavKAN head - linear head (same encoder),"ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=kan","ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=linear",-0.00374732,-0.0345594,0.0266884,False,0.60975
+WavKAN head - mlp head (same encoder),"ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=kan","ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=mlp",-0.0308708,-0.0578846,-0.00322337,True,0.986
+MLP head - linear head (same encoder),"ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=mlp","ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=linear",0.0271235,0.00599138,0.0479334,True,0.00475
+WavKAN head - logistic regression (same descriptor),"ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp|head=kan",baseline:logreg|descriptor=rp,0.0281941,-0.00237762,0.0580438,False,0.037
+WavKAN head - majority class,"ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp|head=kan",baseline:majority|descriptor=rp,0.102784,0.0313486,0.172687,True,0.00125
+WavKAN head - linear head (same encoder),"ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp|head=kan","ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp|head=linear",0.0571021,0.00454878,0.111434,True,0.01775
+WavKAN head - mlp head (same encoder),"ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp|head=kan","ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp|head=mlp",-0.0203426,-0.050429,0.00968902,False,0.903
+MLP head - linear head (same encoder),"ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp|head=mlp","ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp|head=linear",0.0774447,0.0248906,0.12917,True,0.0005
+"WavKAN head - logistic regression, mean over the 8 RP configurations",mean of 8 configurations,baseline:logreg|descriptor=rp,0.0180451,-0.00676216,0.0408576,False,0.06975
+"WavKAN head - majority class, mean over the 8 RP configurations",mean of 8 configurations,baseline:majority|descriptor=rp,0.0926347,0.0195008,0.162928,True,0.0055
+"WavKAN head - mlp head, mean over the 8 RP configurations",mean of 8 configurations,mean of 8 configurations,-0.0276365,-0.0462342,-0.00996057,True,0.99875
+"WavKAN head - linear head, mean over the 8 RP configurations",mean of 8 configurations,mean of 8 configurations,0.0117773,-0.00508017,0.0282627,False,0.089
+"MLP head - linear head, mean over the 8 RP configurations",mean of 8 configurations,mean of 8 configurations,0.0394138,0.0229155,0.0557557,True,0
+"recording-disjoint - excerpt-level folds, WavKAN head, mean over the 8 RP configurations",mean of 8 configurations,mean of 8 configurations,-0.206304,-0.230656,-0.183305,True,1
+"recording-disjoint - performer-disjoint folds, WavKAN head, mean over the 8 RP configurations",mean of 8 configurations,mean of 8 configurations,0.00381424,-0.0222699,0.0298729,False,0.39625
+"WavKAN head, onset strength - majority class",ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan,baseline:majority|descriptor=onset_strength,0.0206995,-0.0320693,0.0729203,False,0.2265
+"WavKAN head, onset strength - logistic regression",ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan,baseline:logreg|descriptor=onset_strength,0.0117773,-0.0175952,0.0422536,False,0.23
+recording-disjoint - excerpt-level folds (same model),"ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp|head=kan","ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp|head=kan",-0.197716,-0.228461,-0.167924,True,1
+recording-disjoint - excerpt-level folds (same model),"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan","ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan",-0.227695,-0.268873,-0.187876,True,1
+recording-disjoint - excerpt-level folds (same model),"ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=kan","ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=kan",-0.213776,-0.24562,-0.183277,True,1
+recording-disjoint - excerpt-level folds (same model),"ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp|head=kan","ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp|head=kan",-0.185582,-0.220533,-0.152556,True,1
+recording-disjoint - excerpt-level folds (same model),"ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp|head=kan","ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp|head=kan",-0.204318,-0.234173,-0.174271,True,1
+recording-disjoint - excerpt-level folds (same model),ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan,ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan,-0.0852962,-0.119509,-0.0517783,True,1
+recording-disjoint - excerpt-level folds (same model),"ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp|head=kan","ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp|head=kan",-0.212348,-0.24395,-0.181688,True,1
+recording-disjoint - excerpt-level folds (same model),"ENC_chs32_ks_[3, 3]_att_None_smooth_False_rp|head=kan","ENC_chs32_ks_[3, 3]_att_None_smooth_False_rp|head=kan",-0.205746,-0.249029,-0.163674,True,1
+recording-disjoint - excerpt-level folds (same model),"ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp|head=kan","ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp|head=kan",-0.203248,-0.233489,-0.173074,True,1
+recording-disjoint - excerpt-level folds (same baseline),baseline:majority|descriptor=onset_strength,baseline:majority|descriptor=onset_strength,-0.00231977,-0.0744696,0.0669761,False,0.5115
+recording-disjoint - excerpt-level folds (same baseline),baseline:logreg|descriptor=onset_strength,baseline:logreg|descriptor=onset_strength,-0.0728051,-0.0984022,-0.0480878,True,1
+recording-disjoint - excerpt-level folds (same baseline),baseline:majority|descriptor=rp,baseline:majority|descriptor=rp,-0.00231977,-0.0744696,0.0669761,False,0.5115
+recording-disjoint - excerpt-level folds (same baseline),baseline:logreg|descriptor=rp,baseline:logreg|descriptor=rp,-0.15132,-0.173023,-0.130221,True,1
+recording-disjoint - performer-disjoint folds (same model),"ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp|head=kan","ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp|head=kan",0.0117773,-0.0262594,0.0497755,False,0.2785
+recording-disjoint - performer-disjoint folds (same model),"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan","ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp|head=kan",-0.0264097,-0.0765798,0.0218714,False,0.85675
+recording-disjoint - performer-disjoint folds (same model),"ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=kan","ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp|head=kan",0.00089222,-0.0353016,0.0342845,False,0.49075
+recording-disjoint - performer-disjoint folds (same model),"ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp|head=kan","ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp|head=kan",-0.00303355,-0.0457985,0.0395632,False,0.56625
+recording-disjoint - performer-disjoint folds (same model),"ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp|head=kan","ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp|head=kan",0.0105282,-0.0273489,0.0497135,False,0.29975
+recording-disjoint - performer-disjoint folds (same model),ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan,ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength|head=kan,-0.00874375,-0.0420872,0.0256815,False,0.69475
+recording-disjoint - performer-disjoint folds (same model),"ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp|head=kan","ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp|head=kan",0.00678087,-0.0345571,0.0466413,False,0.381
+recording-disjoint - performer-disjoint folds (same model),"ENC_chs32_ks_[3, 3]_att_None_smooth_False_rp|head=kan","ENC_chs32_ks_[3, 3]_att_None_smooth_False_rp|head=kan",0.00856531,-0.0374794,0.0521462,False,0.35975
+recording-disjoint - performer-disjoint folds (same model),"ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp|head=kan","ENC_chs32_ks_[5, 5]_att_None_smooth_False_rp|head=kan",0.0214133,-0.0117927,0.0531654,False,0.10925
+recording-disjoint - performer-disjoint folds (same baseline),baseline:majority|descriptor=onset_strength,baseline:majority|descriptor=onset_strength,-0.00124911,-0.0834392,0.0831937,False,0.5145
+recording-disjoint - performer-disjoint folds (same baseline),baseline:logreg|descriptor=onset_strength,baseline:logreg|descriptor=onset_strength,0.00838687,-0.00724582,0.0244394,False,0.1555
+recording-disjoint - performer-disjoint folds (same baseline),baseline:majority|descriptor=rp,baseline:majority|descriptor=rp,-0.00124911,-0.0834392,0.0831937,False,0.5145
+recording-disjoint - performer-disjoint folds (same baseline),baseline:logreg|descriptor=rp,baseline:logreg|descriptor=rp,0.00820842,-0.0111993,0.0271217,False,0.20775

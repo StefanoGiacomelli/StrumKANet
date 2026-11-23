@@ -1,3 +1,4 @@
+import argparse
 import os
 from functools import partial
 import yaml
@@ -10,6 +11,7 @@ from datetime import datetime
 from pytorch_lightning import Trainer, seed_everything
 from pytorch_lightning.loggers import TensorBoardLogger
 from data import PopMusicDataModule
+from evaluation import ProtocolOptions, add_protocol_arguments, options_from_args, save_test_outputs
 from data_processing import rhythm_features
 from model import Model, init_modules
 from globals import SEED, MAIN_FOLDER, CSV_PATH, AUDIO_FOLDER, SPLIT_RATIO, SHUFFLE, BATCH_SIZE, NUM_WORKERS, FEATURES_MAP, LR
@@ -91,13 +93,22 @@ def configure_features_and_preprocessor(config_data: dict):
 
 
 # ------------------- MAIN LOOP -------------------
-def main():
+def main(options=None):
+    """Stage 1. With ``options=None`` (or ``ProtocolOptions()``) the stored 2025 protocol is reproduced exactly:
+    unseeded excerpt-level split re-drawn on every setup() call; files go to experiments/logs and experiments/results."""
     #set_all_seeds(SEED)
-    
-    os.makedirs(LOGS_DIR, exist_ok=True)
-    os.makedirs(RESULTS_DIR, exist_ok=True)
+    options = options or ProtocolOptions()
+    namespace = options.namespace()                      # '' for the legacy protocol: stored files are never mixed with new runs
+    for message in options.warnings():
+        print(f"[WARNING] {message}")
+    logs_dir = os.path.join(LOGS_DIR, namespace) if namespace else LOGS_DIR
+    results_dir = os.path.join(RESULTS_DIR, namespace) if namespace else RESULTS_DIR
+    csv_results = os.path.join(results_dir, "hp_search_results.csv")
 
-    existing_results = load_results(CSV_RESULTS)
+    os.makedirs(logs_dir, exist_ok=True)
+    os.makedirs(results_dir, exist_ok=True)
+
+    existing_results = load_results(csv_results)
     config_files = sorted(glob(os.path.join(CONFIG_DIR, "*.yaml")))
 
     for config_file in config_files:
@@ -117,7 +128,7 @@ def main():
         try:
             set_all_seeds(SEED)
             
-            logger = TensorBoardLogger(save_dir=os.path.join(LOGS_DIR, task), name=exp_id)
+            logger = TensorBoardLogger(save_dir=os.path.join(logs_dir, task), name=exp_id)
 
             features, preprocessor = configure_features_and_preprocessor(config["data"])
             data_module = PopMusicDataModule(csv_path=CSV_PATH,
@@ -130,7 +141,10 @@ def main():
                                              split_ratio=SPLIT_RATIO,
                                              shuffle=SHUFFLE,
                                              batch_size=BATCH_SIZE,
-                                             num_workers=NUM_WORKERS)
+                                             num_workers=NUM_WORKERS,
+                                             split_mode=options.split_mode,
+                                             split_seed=options.split_seed,
+                                             partition_file=options.partition_file)
             data_module.setup()
 
             # Get one batch for modules init inference
@@ -146,7 +160,7 @@ def main():
                           lr=LR,
                           config=config)
 
-            trainer = Trainer(accelerator='auto',
+            trainer = Trainer(accelerator=options.accelerator,
                               max_epochs=config["epochs"],
                               logger=logger,
                               enable_checkpointing=False,
@@ -160,14 +174,18 @@ def main():
             # Store Results
             test_loss = model.test_metrics_summary.get("test_loss", float("nan"))
             test_metric = model.test_metrics_summary.get("test_metric", float("nan"))
-            append_result_to_csv(CSV_RESULTS, [exp_id, test_loss, test_metric, True])
+            append_result_to_csv(csv_results, [exp_id, test_loss, test_metric, True])
+            if options.save_predictions:
+                save_test_outputs(model.test_outputs_npz, os.path.join(results_dir, "predictions"), exp_id)
             
             print(f"[SUCCESS] {exp_id}: Completed.")
 
         except Exception as e:
-            append_result_to_csv(CSV_RESULTS, [exp_id, "", "", False])
+            append_result_to_csv(csv_results, [exp_id, "", "", False])
             print(e)
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Stage 1: NAS/HPO screen of the 468 configurations (default: the stored 2025 protocol).")
+    add_protocol_arguments(parser, stage=1)
+    main(options_from_args(parser.parse_args()))

@@ -1,0 +1,11 @@
+rank,experiment_id,test_accuracy,test_loss
+1,"ENC_chs16_ks_[7, 7]_att_None_smooth_True_rp",0.689839572193,0.821252644062
+2,"ENC_chs16_ks_[5, 5]_att_None_smooth_False_rp",0.641711229947,0.780490100384
+3,"ENC_chs32_ks_[7, 7]_att_None_smooth_False_rp",0.641711229947,0.784472644329
+4,"ENC_chs16_ks_[5, 5]_att_None_smooth_True_rp",0.632798573975,0.865413248539
+5,"ENC_chs32_ks_[7, 7]_att_None_smooth_True_rp",0.631016042781,0.878956079483
+6,ENC_chs16_ks_7_att_convattn_smooth_False_onset_strength,0.616755793226,0.886947751045
+7,ENC_chs16_ks_5_att_convattn_smooth_True_rh,0.613190730838,0.889614403248
+8,"ENC_chs32_ks_[7, 7]_att_None_smooth_False_tempogram_ratio",0.611408199643,0.856645047665
+9,"ENC_chs16_ks_[3, 3]_att_None_smooth_False_rp",0.609625668449,0.874136865139
+10,ENC_chs16_ks_5_att_None_smooth_False_onset_strength,0.609625668449,0.89971858263

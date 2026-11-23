@@ -1,0 +1,118 @@
+{
+  "all_test_accuracies_are_k_over_561": true,
+  "bootstrap": {
+    "resamples": 2000,
+    "seed": 1,
+    "statistic": "median of paired accuracy differences"
+  },
+  "checks": [
+    {
+      "check": "rows in hp_search_results.csv",
+      "observed": 468,
+      "pass": true,
+      "published_or_expected": 468
+    },
+    {
+      "check": "all test_status True",
+      "observed": true,
+      "pass": true,
+      "published_or_expected": true
+    },
+    {
+      "check": "union of the two top-10 lists",
+      "observed": 14,
+      "pass": true,
+      "published_or_expected": 14
+    },
+    {
+      "check": "overlap of the two top-10 lists",
+      "observed": 6,
+      "pass": true,
+      "published_or_expected": 6
+    },
+    {
+      "check": "union equals the 14 ids of training_results.csv",
+      "observed": true,
+      "pass": true,
+      "published_or_expected": true
+    },
+    {
+      "check": "median accuracy, smoothing off (%)",
+      "observed": 42.42,
+      "pass": true,
+      "published_or_expected": 42.42
+    },
+    {
+      "check": "median accuracy, smoothing on (%)",
+      "observed": 42.78,
+      "pass": true,
+      "published_or_expected": 42.78
+    },
+    {
+      "check": "median loss, smoothing off",
+      "observed": 1.0759,
+      "pass": true,
+      "published_or_expected": 1.0759
+    },
+    {
+      "check": "median loss, smoothing on",
+      "observed": 1.079,
+      "pass": true,
+      "published_or_expected": 1.079
+    },
+    {
+      "check": "YAML files in configs/pattern",
+      "observed": 468,
+      "pass": true,
+      "published_or_expected": 468
+    },
+    {
+      "check": "grid = 6 x 48 + 5 x 36",
+      "observed": [
+        288,
+        180
+      ],
+      "pass": true,
+      "published_or_expected": [
+        288,
+        180
+      ]
+    },
+    {
+      "check": "rows without raw and ticks (published table)",
+      "observed": 372,
+      "pass": true,
+      "published_or_expected": 372
+    },
+    {
+      "check": "epochs per YAML (all 1)",
+      "observed": {
+        "1": 468
+      },
+      "pass": true,
+      "published_or_expected": {
+        "1": 468
+      }
+    },
+    {
+      "check": "experiment_id equals file stem",
+      "observed": 0,
+      "pass": true,
+      "published_or_expected": 0
+    }
+  ],
+  "kan_types_in_yaml": {
+    "PatternKAN": 468
+  },
+  "ln3": 1.0986122886681098,
+  "max_accuracy": 0.6898395721925134,
+  "median_accuracy_all": 0.42691622103386806,
+  "n_runs": 468,
+  "n_runs_accuracy_ge_0.55": 66,
+  "n_runs_accuracy_le_0.43": 249,
+  "n_runs_loss_within_0.03_of_ln3": 173,
+  "note": "Stage-1 test accuracy is measured on a partition re-drawn at evaluation time, after one epoch (see docs/PROTOCOL.md).",
+  "overlap_of_top10_lists": 6,
+  "selected_ids_equal_training_results": true,
+  "tie_at_top10_accuracy_cut": false
+}

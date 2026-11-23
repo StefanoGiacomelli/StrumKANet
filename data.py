@@ -2,12 +2,34 @@ import os
 import csv
 import torch
 import numpy as np
-from torch.utils.data import Dataset, DataLoader, random_split
+from torch.utils.data import Dataset, DataLoader, Subset, random_split
 import torch.nn.functional as F
 import torchaudio
 import pytorch_lightning as pl
 from typing import Callable, List, Optional, Dict, Tuple
-from globals import FEATURES_MAP
+from globals import FEATURES_MAP, SEED
+from splits import grouped_partition, check_partition, class_counts, save_partition, load_partition
+
+
+# Audio access --------------------------------------------------------------------------------------------------------------
+# torchaudio < 2.9 provides info()/load() (the legacy path, unchanged). torchaudio >= 2.9 no longer provides info(), so the
+# same quantities are read with soundfile (same samples: float32 in [-1, 1], channels first).
+def _audio_rate_and_frames(path: str) -> Tuple[int, int]:
+    if hasattr(torchaudio, "info"):
+        info = torchaudio.info(path)
+        return info.sample_rate, info.num_frames
+    import soundfile as sf
+    info = sf.info(path)
+    return info.samplerate, info.frames
+
+
+def _load_audio_slice(path: str, start: int, end: int) -> torch.Tensor:
+    if hasattr(torchaudio, "info"):
+        waveform, _ = torchaudio.load(path)
+        return waveform[:, start:end]
+    import soundfile as sf
+    data, _ = sf.read(path, start=start, frames=end - start, dtype="float32", always_2d=True)
+    return torch.from_numpy(np.ascontiguousarray(data.T))
 
 
 class PopMusicDataset(Dataset):
@@ -84,14 +106,24 @@ class PopMusicDataset(Dataset):
         # Read audio files metadata and create segments
         self.segment_map = []
         for i, (file_id, row, path, label) in enumerate(self.entries):
-            info = torchaudio.info(path)
-            if info.sample_rate != self.sr:
-                raise ValueError(f"Expected sample rate {self.sr}, but got {info.sample_rate} in {path}")
-            tot_points = info.num_frames
+            sample_rate, tot_points = _audio_rate_and_frames(path)
+            if sample_rate != self.sr:
+                raise ValueError(f"Expected sample rate {self.sr}, but got {sample_rate} in {path}")
             total_segments = tot_points // self.segment_len
             if total_segments > 2:
                 for segment_idx in range(1, total_segments - 1):
                     self.segment_map.append((i, segment_idx))
+
+    def excerpt_id(self, idx: int) -> str:
+        """Identifier of excerpt ``idx`` (the 'id' returned by ``__getitem__``)."""
+        entry_idx, segment_idx = self.segment_map[idx]
+        return f"{self.entries[entry_idx][0]}_seg{segment_idx}"
+
+    def partition_keys(self) -> Tuple[List[str], List]:
+        """Recording identifier and label of every excerpt, in dataset order (used by recording-disjoint splits)."""
+        groups = [self.entries[entry_idx][0] for entry_idx, _ in self.segment_map]
+        labels = [self.entries[entry_idx][3] for entry_idx, _ in self.segment_map]
+        return groups, labels
 
     def __len__(self):
         """
@@ -115,11 +147,10 @@ class PopMusicDataset(Dataset):
         # Segment retrieval
         entry_idx, segment_idx = self.segment_map[idx]
         file_id, _, path, label = self.entries[entry_idx]
-        waveform, _ = torchaudio.load(path)
         start = segment_idx * self.segment_len
         end = start + self.segment_len
-        segment = waveform[:, start:end]
-        
+        segment = _load_audio_slice(path, start, end)
+
         # Feature extraction
         result = self.preprocessor(segment) if self.preprocessor else segment
 
@@ -239,8 +270,21 @@ class PopMusicDataModule(pl.LightningDataModule):
                  split_ratio: Tuple[float, float, float] = (0.7, 0.15, 0.15),
                  batch_size: int = 16,
                  num_workers: int = 4,
-                 shuffle: bool = True):
+                 shuffle: bool = True,
+                 split_mode: str = "legacy",
+                 split_seed: Optional[int] = None,
+                 partition_file: Optional[str] = None):
+        """
+        Protocol options (defaults reproduce the stored 2025 protocol exactly):
+            split_mode="legacy"  : unseeded excerpt-level ``random_split``, rebuilt and re-drawn on EVERY ``setup()`` call
+                                   (Lightning calls ``setup`` again at ``fit`` and at ``test``).
+            split_mode="seeded"  : the same excerpt-level split, drawn ONCE with ``split_seed`` and reused by fit/validate/test.
+            split_mode="grouped" : recording-disjoint, class-stratified split (whole recordings per part), drawn ONCE with ``split_seed``.
+            partition_file       : JSON file where the computed partition is stored (and verified, if it already exists).
+        """
         super().__init__()
+        if split_mode not in ("legacy", "seeded", "grouped"):
+            raise ValueError(f"split_mode must be 'legacy', 'seeded' or 'grouped', got {split_mode!r}")
         self.csv_path = csv_path
         self.audio_folder = audio_folder
         self.segment_duration = segment_duration
@@ -252,8 +296,16 @@ class PopMusicDataModule(pl.LightningDataModule):
         self.batch_size = batch_size
         self.num_workers = num_workers
         self.shuffle = shuffle
+        self.split_mode = split_mode
+        self.split_seed = SEED if split_seed is None else split_seed
+        self.partition_file = partition_file
+        self.dataset = None
+        self._partition_ready = False
 
     def setup(self, stage: Optional[str] = None):
+        if self.split_mode != "legacy" and self._partition_ready:
+            return                                     # drawn once: reused by fit / validate / test
+
         dataset = PopMusicDataset(csv_path=self.csv_path,
                                   audio_folder=self.audio_folder,
                                   segment_duration=self.segment_duration,
@@ -266,7 +318,34 @@ class PopMusicDataModule(pl.LightningDataModule):
         train_len = int(self.split_ratio[0] * total)
         val_len = int(self.split_ratio[1] * total)
         test_len = total - train_len - val_len
-        self.train_set, self.val_set, self.test_set = random_split(dataset, [train_len, val_len, test_len])
+        if self.split_mode == "legacy":
+            self.train_set, self.val_set, self.test_set = random_split(dataset, [train_len, val_len, test_len])
+            return
+
+        # Default-off options: the partition is computed once with its own generator and (optionally) stored for audit.
+        groups, labels = dataset.partition_keys()
+        if self.split_mode == "seeded":
+            generator = torch.Generator().manual_seed(self.split_seed)
+            parts = [list(subset.indices) for subset in random_split(dataset, [train_len, val_len, test_len], generator=generator)]
+        else:
+            parts = grouped_partition(groups, labels if self.label_type == "pattern" else None, self.split_ratio, self.split_seed)
+        summary = check_partition(parts, groups, total, disjoint_groups=self.split_mode == "grouped")
+        payload = {"mode": self.split_mode, "seed": self.split_seed, "split_ratio": list(self.split_ratio), "summary": summary,
+                   "class_counts": class_counts(parts, labels) if self.label_type == "pattern" else None,
+                   "parts": {name: [dataset.excerpt_id(i) for i in part] for name, part in zip(("train", "val", "test"), parts)}}
+        if self.partition_file:
+            if os.path.isfile(self.partition_file):
+                stored = load_partition(self.partition_file)
+                if stored.get("parts") != payload["parts"]:
+                    raise ValueError(f"{self.partition_file} does not match the partition computed for mode={self.split_mode}, "
+                                     f"seed={self.split_seed} on this dataset; remove it or use another file")
+            else:
+                os.makedirs(os.path.dirname(os.path.abspath(self.partition_file)), exist_ok=True)
+                save_partition(self.partition_file, payload)
+        self.dataset = dataset
+        self.train_set, self.val_set, self.test_set = (Subset(dataset, part) for part in parts)
+        self.partition_summary = summary
+        self._partition_ready = True
 
     def train_dataloader(self):
         return DataLoader(self.train_set, batch_size=self.batch_size, shuffle=self.shuffle,
@@ -274,11 +353,11 @@ class PopMusicDataModule(pl.LightningDataModule):
 
     def val_dataloader(self):
         return DataLoader(self.val_set, batch_size=self.batch_size, shuffle=False,
-                          num_workers=self.num_workers, collate_fn=custom_collate_fn, persistent_workers=True)
+                          num_workers=self.num_workers, collate_fn=custom_collate_fn, persistent_workers=self.num_workers > 0)
 
     def test_dataloader(self):
         return DataLoader(self.test_set, batch_size=self.batch_size, shuffle=False,
-                          num_workers=self.num_workers, collate_fn=custom_collate_fn, persistent_workers=True)
+                          num_workers=self.num_workers, collate_fn=custom_collate_fn, persistent_workers=self.num_workers > 0)
 
 
 # Test commands ------------------------------------------------------------------------------------------------------------
